@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com/child">
-  <title>Archives: 2018 | 爱玩青年</title>
+  <title>JAVA 基础 | 爱玩青年</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="喜欢吃，喜欢玩，热爱生活，热爱学习。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="爱玩青年">
-<meta property="og:url" content="http://yoursite.com/child/archives/2018/index.html">
+  <meta name="description" content="JAVA 内存 静态存储区：存放静态数据，全局 static 数据和常量，编译器已经分配内存并且在程序运行期间都存在。 栈区：存放方法内部的局部变量，在方法执行结束后局部变量的内存就被释放，效率高但是分配内存容量有限。 堆区：存放 new 出来的对象实例，这个实例不使用时就会被 GC 回收。 123456789101112131415public class Sample &amp;#123;  //s1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA 基础">
+<meta property="og:url" content="http://yoursite.com/child/2018/11/30/JAVA 基础/index.html">
 <meta property="og:site_name" content="爱玩青年">
-<meta property="og:description" content="喜欢吃，喜欢玩，热爱生活，热爱学习。">
+<meta property="og:description" content="JAVA 内存 静态存储区：存放静态数据，全局 static 数据和常量，编译器已经分配内存并且在程序运行期间都存在。 栈区：存放方法内部的局部变量，在方法执行结束后局部变量的内存就被释放，效率高但是分配内存容量有限。 堆区：存放 new 出来的对象实例，这个实例不使用时就会被 GC 回收。 123456789101112131415public class Sample &amp;#123;  //s1">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://github.com/0HongTao0/Blog/blob/master/pic/HashMap_%E4%B8%8D%E5%90%8CJDK%E6%89%A9%E5%AE%B9%E6%AF%94%E8%BE%83.png?raw=true">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5545289-1c4500c4a5adaafe.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/527/format/webp">
+<meta property="og:updated_time" content="2018-12-09T10:53:46.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="爱玩青年">
-<meta name="twitter:description" content="喜欢吃，喜欢玩，热爱生活，热爱学习。">
+<meta name="twitter:title" content="JAVA 基础">
+<meta name="twitter:description" content="JAVA 内存 静态存储区：存放静态数据，全局 static 数据和常量，编译器已经分配内存并且在程序运行期间都存在。 栈区：存放方法内部的局部变量，在方法执行结束后局部变量的内存就被释放，效率高但是分配内存容量有限。 堆区：存放 new 出来的对象实例，这个实例不使用时就会被 GC 回收。 123456789101112131415public class Sample &amp;#123;  //s1">
+<meta name="twitter:image" content="https://github.com/0HongTao0/Blog/blob/master/pic/HashMap_%E4%B8%8D%E5%90%8CJDK%E6%89%A9%E5%AE%B9%E6%AF%94%E8%BE%83.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="爱玩青年" type="application/atom+xml">
   
@@ -143,295 +147,259 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JAVA 基础" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JAVA 基础
+    </h1>
+  
+
+        
+        <a href="/2018/11/30/JAVA 基础/" class="archive-article-date">
+  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="JAVA-内存"><a href="#JAVA-内存" class="headerlink" title="JAVA 内存"></a><a href="https://github.com/francistao/LearningNotes/blob/master/Part1/Android/Android%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E6%80%BB%E7%BB%93.md" target="_blank" rel="noopener">JAVA 内存</a></h3><ul>
+<li>静态存储区：存放静态数据，全局 static 数据和常量，编译器已经分配内存并且在程序运行期间都存在。</li>
+<li>栈区：存放方法内部的局部变量，在方法执行结束后局部变量的内存就被释放，效率高但是分配内存容量有限。</li>
+<li><p>堆区：存放 new 出来的对象实例，这个实例不使用时就会被 GC 回收。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sample</span> </span>&#123;</span><br><span class="line">  <span class="comment">//s1 和 0 内存都存放在堆中</span></span><br><span class="line">    <span class="keyword">int</span> s1 = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//mSample1 和 mSample1 所指的对象内存都存放在堆中</span></span><br><span class="line">    Sample mSample1 = <span class="keyword">new</span> Sample();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// s2 存在于栈中</span></span><br><span class="line">        <span class="keyword">int</span> s2 = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">//引用 mSample2 存放于栈中，但 mSample2 指的对象内存存放于堆中</span></span><br><span class="line">        Sample mSample2 = <span class="keyword">new</span> Sample();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//引用 mSample3存放于栈中，但是 mSample3 所指对象存放于堆中，包括对象内部的成员变量 s1，mSample1 都在堆中</span></span><br><span class="line">Sample mSample3 = <span class="keyword">new</span> Sample();</span><br></pre></td></tr></table></figure>
+<p><strong>结论：局部变量的基本数据类型和引用存放于栈，引用所指的对象和类的成员变量存放于堆中（包括引用和引用指的对象）。</strong></p>
+</li>
+<li>Java 的内存管理<ol>
+<li>内存的分配由程序员来完成，即程序调用 new 方法或通过反射来分配内存。</li>
+<li>内存的回收是由垃圾回收器（GC）完成的，对象不再被引用，该对象的内存就被释放回收。</li>
+</ol>
+</li>
+<li>JAVA 内存泄漏<ol>
+<li>简单介绍：指的是在程序中，存在相对程序逻辑来说已经无用的对象，但是由于对象一直被引用者导致无法被垃圾回收器释放回收，这些对象会在程序运行期间一直占着内存。</li>
+<li><strong>内存泄漏的原因</strong><ul>
+<li><strong>静态集合</strong> 引用的所有对象 Object 在程序运行期间都无法释放。</li>
+<li>集合里面的对象属性被修改后再调用 remove() 方法无效（如 hashcode 不同无法 remove）。</li>
+<li><strong>监听器没有释放</strong> ，导致该监听的实体没有被释放。</li>
+<li><strong>数据库连接，网络连接和 IO 连接</strong> ，即涉及流操作都没有显式调用 close() 方法，GC 不会回收。</li>
+<li><strong>内部类和外部模块的引用</strong>，非静态的内部类和匿名类会隐式地持有一个他们外部类的引用，当外部类对象已经相对程序无作用时，非静态得内部类和匿名类引用着外部类，导致外部类对象无法被回收释放。</li>
+<li><strong>单例模式</strong> ， 单例模式在初始化后在程序运行期间都是存在的，如果单例模式持有外部对象得引用，则会导致外部对象无法释放回收。<a id="more"></a>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="JAVA-集合"><a href="#JAVA-集合" class="headerlink" title="JAVA 集合"></a>JAVA 集合</h3><ul>
+<li>Map<br>主要的实现类有：HashMap， HashTable， LinkedHashMap，TreeMap。<ol>
+<li>HashMap根据 Key 的 HashCode 来存储数据，只允许一个 Key 为 Null，但允许多条记录为 Null，HashMap 线程不安全。可以使用 Collections.synchronizedMap() 方法来使HashMap 具有线程安全，或者直接使用 <strong>ConcurrentHashMap</strong> 代替。</li>
+<li>HashTable 和 HashMap 的功能差不多，但是它是性能安全的。</li>
+<li>LinkedHashMap 是 HashMap 的子类，保存插入顺序，也就是说它是有序的，可以通过 Iterator 迭代器遍历 LinkedHashMap。</li>
+<li>TreeMap实现 SortedMap 接口，内部有序，顺序是按照 Key 的升序排序，也可以自己实现排序的比较器（Comparable 接口）。用 Iterator 遍历也是有序的。</li>
+</ol>
+</li>
+<li><p><a href="https://tech.meituan.com/java_hashmap.html" target="_blank" rel="noopener">HashMap</a></p>
+<ol>
+<li>HashMap 按照 <strong>Lazy-Load</strong> 来进行初始化，通过 resize() 来进行初始化一个 HashMap 和对 HashMap 进行扩容。</li>
+<li>键值对在 HashMap 内的位置 index 取决于位运算 <strong>i = (n -1) &amp; hash（n 为 table 长度）</strong>;</li>
+<li>如果内存空间很多而又对时间效率要求很高，可以降低负载因子 Loadfactor 的值，门限值降低，table 数组就容易扩容，但是每个数组上的链表就会相对短，查询就快；相反，如果内存空间紧张而对时间效率要求不高，可以增加负载因子 loadFactor 的值，（loadFactor 可以大于1，但是建议不超过 0.75，默认值 0.75 符合大多数场景）。</li>
+<li>而当链表长度太长（ <strong>默认超过8</strong> ）时，链表就转换为 <strong>红黑树</strong> ，利用红黑树快速增删改查的特点提高 HashMap 的性能。</li>
+<li><strong>门限值（threshold） = 负载因子(loadfactor) * 容量（capacity）</strong>，在元素个数超过门限值时（size &gt; threshold），调整 Map 的大小，table 的长度使用的是 2 次幂扩展(指长度扩为原来 2 倍)，同理根据门限值的计算公式可以计算出门限值也是原来 2 倍。 <strong>扩容非常耗性能，所以在使用 HashMap 时最好给一个大致的 size，避免频繁扩容</strong>。</li>
+<li><p>扩容对应的键的 hash 计算</p>
+<ul>
+<li>jdk 7：重新计算 hash 值来获取索引值。</li>
+<li>jdk 8：只需要看看原来的hash值新增的那个bit是1还是0就好了，是 <strong>0</strong> 的话索引 <strong>不变</strong> ，是 <strong>1</strong> 的话索引变成 <strong>“原索引+oldCap”</strong></li>
+</ul>
+<p><img src="https://github.com/0HongTao0/Blog/blob/master/pic/HashMap_%E4%B8%8D%E5%90%8CJDK%E6%89%A9%E5%AE%B9%E6%AF%94%E8%BE%83.png?raw=true" alt="img"></p>
+</li>
+<li>线程安全问题：<br>HashMap 是线程不安全的，为什么呢？<br>并发的多线程使用场景中使用 HashMap 可能造成死循环，因为在 resize 过程中会导致出现环形链表。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="JAVA-并发"><a href="#JAVA-并发" class="headerlink" title="JAVA 并发"></a>JAVA 并发</h3><ul>
+<li><p>如何创建多线程？</p>
+<p>主要有 2 种方法</p>
+<ol>
+<li>创建一个子类继承（extends） Thread 类，然后重写 run（）方法。</li>
+<li>创建一个子类实现（implement）Runnable 接口，然后重写 run（）方法。</li>
+</ol>
+</li>
+<li><p>简述线程的五种状态</p>
+<ol>
+<li><p>线程的五种状态分别是：新建（New），就绪（Runnable），运行（Running），终止（Dead），阻塞（Blocked）</p>
+</li>
+<li><p>线程没被阻塞从新建状态到终止状态的过程：从线程被 new 创建开始，线程就进入<strong>新建</strong>状态，当程序调用 Thread.start() 方法的时候，线程进入<strong>就绪</strong>状态，因为 JAVA 线程的调度是抢占式调度，所以在这个时候线程有可能正在运行也可能没有运行，当操作系统分配时间片给线程的时候，线程进入<strong>运行</strong>状态，当 Thread.run() 方法执行到最后一条语句并返回的时候，线程自然死亡，进入<strong>终止</strong>状态。</p>
+</li>
+<li><p>线程被阻塞即从<strong>就绪</strong>状态转至<strong>阻塞</strong>状态，导致线程进入阻塞状态的原因主要有 3 个，<strong>同步阻塞</strong>，当线程获取一个被其他线程所持有的对象锁，线程进入阻塞状态。线程执行 <strong>Thread.sleep()</strong> 方法，以及 <strong>Thread.wait()</strong> 方法。当线程在阻塞状态被激活的时候，线程进入<strong>就绪</strong>状态，等待系统调度进入<strong>运行</strong>状态。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5545289-1c4500c4a5adaafe.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/527/format/webp" alt="img"></p>
+</li>
+</ol>
+</li>
+<li><p>如何中断正在执行的线程</p>
+<ol>
+<li>执行完 run（）方法的最后一条语句并由 return 返回时，线程终止。</li>
+<li>当线程run（）方法种出现了没有捕获分异常时，线程终止。</li>
+</ol>
+<p>没有方法可以强制终止线程，但是可以用 Thread.interrupt() 方法来请求终止线程。线程有个中断状态的 Boolean 标志，不停地检查该标志，线程阻塞无法检查中断状态所以不能在线程阻塞的时候调用 Thread.interrupt() 方法（会抛出 InterruptedException）。</p>
+</li>
+<li><p>锁的相关理解</p>
+<ol>
+<li>锁是防止程序代码块中受并发访问而造成不安全的干扰，即保证任何时刻只能有一个线程执行被保护的代码。</li>
+<li>大多数情况下是通过 synchronized 关键字来实现锁，在 JAVA 中每一个对象都存在一个锁，<strong>synchronized 用在方法上</strong>，是锁住当前对象的当前方法，多个线程访问这个对象的该方法会被阻塞；<strong>synchronized(this)</strong> 锁住的是当前对象的，多个线程访问这个对象会被阻塞；同理可得 <strong>synchronized(object)</strong> 锁的是 object 对象，多个线程访问该对象会被阻塞；（注意：锁的对象不能是 final 类，因为经过修改的 final 类会是一个新对象，无法获取同一个锁）</li>
+<li>也可以通过 JAVA 提供的 Lock 类来实现锁。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h3 id="JAVA-代理"><a href="#JAVA-代理" class="headerlink" title="JAVA 代理"></a>JAVA 代理</h3><ul>
+<li>静态代理：代码 <strong>运行之前</strong> 代理类的 Class 编译文件就已经存在。<br>实现思路：通过代理者和被代理者实现同一接口，并且代理者种存在一个被代理者的实例，即调用方通过代理者间接调用被代理者的方法。</li>
+<li>动态代理：代码 <strong>运行过程</strong> 通过反射机制直接生成代理者对象。<br>实现思路：通过 java.lang.reflect 的 Proxy 实现，有 3 个参数。<br>ClassLoder: 类加载器<br>Class&lt;?&gt;[]: 对象组<br>InvocationHandler: <strong>调用处理器,无论何时调用代理对象的方法调用处理器的 invoke 方法都会被调用。</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">newProxyInstance</span><span class="params">(ClassLoader loader,Class&lt;?&gt;[] interfaces, InvocationHandler h)</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicProxy</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Object obj;<span class="comment">//被代理的类引用</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DynamicProxy</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.obj = obj;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> throw Throwable</span>&#123;</span><br><span class="line">    Object result = method.invoke(obj, args);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/30/JAVA 基础/" class="archive-article-date">
-  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/30/JAVA 基础/">JAVA 基础</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/child/2018/11/30/JAVA 基础/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/30/随手记/" class="archive-article-date">
-  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/30/随手记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">随手记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/30/随手记/">随手记</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/30/设计模式/" class="archive-article-date">
-  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/30/设计模式/">设计模式</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/30/Android 基础/" class="archive-article-date">
-  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/30/Android 基础/">Android 基础</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/30/计算机网络/" class="archive-article-date">
-  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/30/计算机网络/">计算机网络</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/30/操作系统/" class="archive-article-date">
-  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/30/操作系统/">操作系统</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/30/数据结构和算法/" class="archive-article-date">
-  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/30/数据结构和算法/">数据结构和算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/02/Android 绘制过程/" class="archive-article-date">
-  	<time datetime="2018-08-02T02:01:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/02/Android 绘制过程/">Android 绘制过程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/27/Java Thread/" class="archive-article-date">
-  	<time datetime="2018-07-27T02:33:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/27/Java Thread/">Java Thread</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/26/Android Retrofit/" class="archive-article-date">
-  	<time datetime="2018-07-26T02:48:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/26/Android Retrofit/">Android Retrofit</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -455,8 +423,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
