@@ -145,6 +145,308 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-操作系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/21/操作系统/">操作系统</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/21/操作系统/" class="archive-article-date">
+  	<time datetime="2018-12-21T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><ul>
+<li>前趋图：描述一组进程的顺序和并发执行情况<br><img src="https://upload-images.jianshu.io/upload_images/1711514-10640ee4c2c8c273.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/784/format/webp" alt="前趋图"></li>
+<li>进程执行的特征<ol>
+<li>顺序执行特征：顺序性，封闭性，可再现性</li>
+<li>并发执行特征：间断性，失去封闭性，不可再现性</li>
+</ol>
+</li>
+<li><strong>进程控制块（PCB）</strong> ：描述进程的基本情况和活动过程，对进程进行控制和管理。<ol>
+<li>进程实体 = 程序 + 数据 + 进程控制块</li>
+<li>创建进程就是创建进程的 PCB，撤销进程就是撤销进程的 PCB。</li>
+<li><strong>PCB 的作用：使多道程序能够独立运行。（使进程并发执行）</strong></li>
+<li>PCB 的信息：进程标识符，处理机状态，进程调度信息，进程控制信息。</li>
+<li>操作系统管理 PCB 的方式：线性方式（线性表），链接方式（链表），索引方式（进程状态索引表）  </li>
+</ol>
+</li>
+<li>进程的状态转换<ol>
+<li>状态转换图（创建,就绪，执行，阻塞，，终止）<br><img src="https://images2018.cnblogs.com/blog/613630/201711/613630-20171128183008347-37129056.jpg" alt="状态转换图"></li>
+<li>引入 <strong>挂起</strong> 状态转换图（创建，活动就绪，静止就绪，活动阻塞，静止阻塞，执行，终止）<br>进程挂起 ：进程处于静止状态，若正在执行，则暂停执行；若正在就绪，则不被调度；等待 <strong>激活</strong>。<br><img src="https://images2018.cnblogs.com/blog/1048215/201802/1048215-20180225230737441-833727159.png" alt="引入挂起的进程状态转换图"></li>
+</ol>
+</li>
+<li>进程的控制<ol>
+<li>引起创建：用户登录；作业调度；提供服务；应用请求。<br>进程创建：申请空白 PCB；分配资源；初始化 PCB；插入就绪队列（就绪队列有空间）；</li>
+<li>引起终止：正常结束；异常结束（越错界，保护错，非法指令，特权指令错，运行超时，等待超时，算术运算错）；外界干预（操作系统发生了某事件，父进程请求，父进程终止）<br>进程终止：根据标识符在 PCB 集合中检索；进程在执行应立即终止执行；若进程有子进程，应终止所有子进程；回收被终止进程的资源；将终止进程的 PCB 从 PCB 集合中移除；</li>
+<li>引起阻塞：共享资源失败；等待某种操作完成；新数据还没到达；等待新任务到达；<br>进程阻塞（自身的主动行为）：进程处于执行状态应立即停止执行；PCB 置于阻塞状态；把 PCB 插入阻塞队列；<br>进程唤醒：把被阻塞进程从阻塞队列移除；PCB 状态由阻塞改为就绪状态；将 PCB 插入就绪队列。</li>
+<li>引起挂起：终端用户需要；父进程请求；负荷调节；操作系统需要；<br>进程挂起：若进程活动就绪，改为静止就绪；若进程活动阻塞，改为静止阻塞；将进程的 PCB 复制到指定的内存区域；<br>进程激活：若进程静止就绪，改为活动就绪；若进程静止阻塞，改为活动阻塞；</li>
+</ol>
+</li>
+<li><strong>进程同步</strong><ol>
+<li>进程同步机制：多个进程在执行次序上进行协调；并发执行的进程进行共享系统资源；使程序的执行具有可再现性；</li>
+<li>临界资源：多个进程采取互斥的方式对临界资源实现共享；（多个进程都需要访问的资源）</li>
+<li>临界区：每个进程中访问临界资源的代码块；</li>
+<li>互斥访问：如果该资源未被访问，进程可进行访问该资源，并设置正在被访问标志；如果资源正在被某进程访问，则本进程无法访问该资源；</li>
+<li>同步机制的规则：空闲让进；忙则等待；有限等待；让权等待；</li>
+</ol>
+</li>
+<li><p>硬件实现进程同步机制<br>优点：简单实现<br>缺点：访问进程要不断测试是否可以进入，处于“忙等”状态，不符合“让权等待”原则，造成处理机时间浪费。</p>
+<ol>
+<li>关中断实现同步：在进入所测试之前关闭中断，完成锁测试并上锁后打开中断。（进程在临界区执行时，<strong>计算机系统不响应中断</strong>）<br>关中断缺点：可能道导致严重后果；影响系统效率；不适用多 CPU 系统；</li>
+<li>Test-and-Set 指令实现同步：<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">boolean <span class="title">TS</span><span class="params">(boolean *lock)</span></span>&#123;</span><br><span class="line">  Boolean old;</span><br><span class="line">  old = *lock;</span><br><span class="line">  *lock = TRUE;</span><br><span class="line">  <span class="keyword">return</span> old;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  非临界资源操作；</span><br><span class="line">  <span class="function"><span class="keyword">while</span> <span class="title">TS</span><span class="params">(&amp;lock)</span></span>; <span class="comment">/*当临界资源被锁时阻塞在这*/</span></span><br><span class="line">  临界资源操作;</span><br><span class="line">  lock = FALSE; <span class="comment">/*释放临界资源的锁*/</span></span><br><span class="line">  非临界资源操作;</span><br><span class="line">&#125;<span class="keyword">while</span> (TURE)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>Swap 指令实现同步：<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(boolean *a, boolean *b)</span></span>&#123;</span><br><span class="line">  boolean temp;</span><br><span class="line">  temp = *a;</span><br><span class="line">  *a = *b;</span><br><span class="line">  *b = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  key = TURE;</span><br><span class="line">  <span class="keyword">do</span> &#123;</span><br><span class="line">    swap(&amp;lock, &amp;key);</span><br><span class="line">  &#125; <span class="keyword">while</span>(key != FALSE); <span class="comment">/*当临界资源被锁时阻塞在这*/</span></span><br><span class="line">  临界资源操作;</span><br><span class="line">  lock = FALSE;</span><br><span class="line">  非临界资源操作;</span><br><span class="line">&#125; <span class="keyword">while</span>(TRUE);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>信号量机制实现同步（wait(S) , signal(S)）</p>
+<ol>
+<li><p>整形信号量(未遵循让权等待，出现 “忙等”)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wait(S)&#123;</span><br><span class="line">  <span class="keyword">while</span> (S &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">    S--;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">signal(S)&#123;</span><br><span class="line">  S++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>记录型信号量（符合让权等待，共享一个临界资源，交替共享多个临界资源易发生死锁）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> value; <span class="comment">//资源数目</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">process_control_block</span> *<span class="title">list</span>;</span><span class="comment">/*进程链表指针*/</span></span><br><span class="line">&#125;semaphore;</span><br><span class="line">wait(semaphore *S)&#123;</span><br><span class="line">  s-&gt;value--;</span><br><span class="line">  <span class="keyword">if</span> (S-&gt;value &lt; <span class="number">0</span>) block(S-&gt;<span class="built_in">list</span>); <span class="comment">/*资源不够,阻塞当前进程，放弃处理机*/</span></span><br><span class="line">&#125;</span><br><span class="line">signal(semaphore *S)&#123;</span><br><span class="line">  S-&gt;value++;</span><br><span class="line">  <span class="keyword">if</span> (S-&gt;value &lt;= <span class="number">0</span>) wakeup(S-&gt;<span class="built_in">list</span>); <span class="comment">/*仍有阻塞进程，唤醒被阻塞的进程*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>AND 型信号量（共享多个临界资源，一个单位）：多个临界资源要么全部都分配给一个进程，要么都不分配给一个进程。<br>实现方式：在 wait 操作中增加一个 “AND” 条件，即 wait 操作要传入多个临界资源，对每个临界资源实现类似 <strong>记录型信号量</strong> 的操作。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Swait(S1, S2, ... ,Sn)&#123;</span><br><span class="line">  <span class="keyword">while</span> (TRUE) &#123;</span><br><span class="line">    <span class="keyword">if</span> (Si &gt;= <span class="number">1</span> &amp;&amp; ... &amp;&amp; Sn &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; n; i++) Si--;   <span class="comment">/*可以共享*/</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">/*资源不够，进程进入阻塞队列，放弃处理机*/</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Ssignal(S1, S2, ... ,Sn)&#123;</span><br><span class="line">  <span class="keyword">while</span> (TRUE) &#123;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++) &#123;  <span class="comment">/*释放锁*/</span></span><br><span class="line">      Si++;</span><br><span class="line">      <span class="comment">/*进程进入就绪队列*/</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>信号量集（对多个单位的临界资源实现共享）<br>Swait(S1, t1, d1 ,…, Sn, tn, dn);<br>Ssignal(S1, d1 ,…, Sn, dn);</p>
+</li>
+</ol>
+</li>
+<li><p><strong>信号量的应用</strong></p>
+<ol>
+<li><p>利用信号量实现进程互斥</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">semaphore mutex=<span class="number">1</span>;</span><br><span class="line">Px()&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">    wait(mutex);</span><br><span class="line">    临界区;</span><br><span class="line">    signal(mutex);</span><br><span class="line">    剩余区;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>利用信号量实现前趋关系</strong><br><strong>巧记：指入 wait；指出 signal</strong><br>通过例子学习：<br><img src="https://upload-images.jianshu.io/upload_images/656630-33723c9b511ef3d3.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240" alt="前趋图举例"><br>前趋关系：S1-&gt;S2, S1-&gt;S3 设置信号量 a，b；S2-&gt;S4,S2-&gt;S5,S3-&gt;S6,S4-&gt;S6,S5-&gt;S6 设置信号量 c,d,e,f,g；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">P1()&#123;S1; signal(a);signal(b);&#125;</span><br><span class="line">P2()&#123;wait(a),S2; signal(c);signal(d);&#125;</span><br><span class="line">P3()&#123;wait(b);S3; signal(e);&#125;</span><br><span class="line">P4()&#123;wait(c);S4; signal(f);&#125;</span><br><span class="line">P5()&#123;wait(d);S5; signal(g);&#125;</span><br><span class="line">P6()&#123;wait(e);wait(f);wait(g);S6;&#125;</span><br><span class="line">main()&#123;</span><br><span class="line">  semaphore a,b,c,d,e,f,g;</span><br><span class="line">  a.value = b.value = c.value = d.value = e.value = f.value = g.value = <span class="number">0</span>;</span><br><span class="line">  cobegin</span><br><span class="line">    P1();P2();P3();P4();P5();P6();</span><br><span class="line">  coend</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>管程机制（面向对象思想）：用少量信息和对该资源所执行的操作来表征该资源，忽略它们的内部结果过和实现细节，利用共享数据结构抽象表示系统的共享资源。</p>
+</li>
+<li>经典进程同步问题<ol>
+<li>生产者-消费者问题（利用各种信号量解决）</li>
+<li>哲学家进餐问题（利用 AND 信号量机制解决）</li>
+<li>读者-写者问题 （利用 记录型信号量 和 信号量集 解决）</li>
+</ol>
+</li>
+<li>进程和线程的区别？<ol>
+<li>进程是系统进行资源分配和调度的一个独立单位，拥有独立的系统资源空间（内存地址），一个应用程序至少有一个进程，一个进程至少有一个线程。</li>
+<li>线程是进程的一个实体，是 CPU 调度和分配的基本单位，必须依赖应用程序（进程）存在。线程只拥有一点在线程运行过程必须的资源，但是线程之间没有单独的地址空间。
+        
+          <a class="article-more-a" href="/2018/12/21/操作系统/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/21/操作系统/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Android 基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/13/Android 基础/">Android 基础</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/13/Android 基础/" class="archive-article-date">
+  	<time datetime="2018-12-13T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="IPC-机制（Inter-Process-Communication）"><a href="#IPC-机制（Inter-Process-Communication）" class="headerlink" title="IPC 机制（Inter-Process Communication）"></a>IPC 机制（Inter-Process Communication）</h3><p>  参考：《Android 开发艺术探索》</p>
+<ul>
+<li>Android 为什么需要跨进程通信？<br>Android 是基于 Linux 系统的，在 Linux 系统中进程之间是相互独立的（进程隔离），为了保证安全性和独立性，一个进程不能直接访问另一个进程的空间。</li>
+<li>Android 多进程：在 Android 中使用多进程的唯一方法是给四大组件在 AndroidMenifest 中指定 android:process 属性。</li>
+<li>Android 多进程带来的问题：<ol>
+<li>静态成员和单例模式完全失效</li>
+<li>线程同步机制完全失效</li>
+<li>SharedPreferences 的可靠性下降（不支持 2 个进程同时写入）</li>
+<li>Application 多次创建<br><strong>不同进程属于不同的虚拟机和不同的 Application，拥有不同的内存空间</strong></li>
+</ol>
+</li>
+<li>序列化<ol>
+<li>Serializable 接口：JAVA 提供的，耗能较大，通常用于储存设备序列化和网络传输序列化。</li>
+<li>Parcelable 接口：Android 提供的，效率高，主要用于内存的序列化。（Android Studio 有插件生成）</li>
+</ol>
+</li>
+<li>AIDL 实现跨进程通信<br><img src="https://github.com/0HongTao0/Blog/blob/master/pic/AIDL%20Binder.jpg?raw=true" alt="AIDL 过程图"></li>
+</ul>
+        
+          <a class="article-more-a" href="/2018/12/13/Android 基础/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/13/Android 基础/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数据结构和算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/12/数据结构和算法/">数据结构和算法</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/12/数据结构和算法/" class="archive-article-date">
+  	<time datetime="2018-12-12T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数据摘要算法"><a href="#数据摘要算法" class="headerlink" title="数据摘要算法"></a>数据摘要算法</h3><ul>
+<li>简单解释一下数据摘要<br>数据摘要就是通过某种算法（MD5, SHA-1）进行对数据进行摘要，也叫数据指纹。</li>
+<li><p>数据摘要的特点</p>
+<ol>
+<li>无论数据多大，计算出的数据摘要的长度是固定的。</li>
+<li>数据不同，进行摘要算法的结果也不同。数据改变了摘要的结果也不同。</li>
+<li>不可逆，即通过摘要算法不可以恢复出任何原始数据。</li>
+</ol>
+        
+          <a class="article-more-a" href="/2018/12/12/数据结构和算法/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/12/数据结构和算法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JAVA 基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -355,88 +657,6 @@
 
 
   
-    <article id="post-Android 基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/Android 基础/">Android 基础</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/30/Android 基础/" class="archive-article-date">
-  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="IPC-机制（Inter-Process-Communication）"><a href="#IPC-机制（Inter-Process-Communication）" class="headerlink" title="IPC 机制（Inter-Process Communication）"></a>IPC 机制（Inter-Process Communication）</h3><p>  参考：《Android 开发艺术探索》</p>
-<ul>
-<li>Android 为什么需要跨进程通信？<br>Android 是基于 Linux 系统的，在 Linux 系统中进程之间是相互独立的（进程隔离），为了保证安全性和独立性，一个进程不能直接访问另一个进程的空间。</li>
-<li>Android 多进程：在 Android 中使用多进程的唯一方法是给四大组件在 AndroidMenifest 中指定 android:process 属性。</li>
-<li>Android 多进程带来的问题：<ol>
-<li>静态成员和单例模式完全失效</li>
-<li>线程同步机制完全失效</li>
-<li>SharedPreferences 的可靠性下降（不支持 2 个进程同时写入）</li>
-<li>Application 多次创建<br><strong>不同进程属于不同的虚拟机和不同的 Application，拥有不同的内存空间</strong></li>
-</ol>
-</li>
-<li>序列化<ol>
-<li>Serializable 接口：JAVA 提供的，耗能较大，通常用于储存设备序列化和网络传输序列化。</li>
-<li>Parcelable 接口：Android 提供的，效率高，主要用于内存的序列化。（Android Studio 有插件生成）</li>
-</ol>
-</li>
-<li>AIDL 实现跨进程通信<br><img src="https://github.com/0HongTao0/Blog/blob/master/pic/AIDL%20Binder.jpg?raw=true" alt="AIDL 过程图"></li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/11/30/Android 基础/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/30/Android 基础/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-计算机网络" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -470,161 +690,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/30/计算机网络/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/操作系统/">操作系统</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/30/操作系统/" class="archive-article-date">
-  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><p>进程和线程的区别？</p>
-<ol>
-<li>进程是系统进行资源分配和调度的一个独立单位，拥有独立的系统资源空间（内存地址），一个应用程序至少有一个进程，一个进程至少有一个线程。</li>
-<li>线程是进程的一个实体，是 CPU 调度和分配的基本单位，必须依赖应用程序（进程）存在。线程只拥有一点在线程运行过程必须的资源，但是线程之间没有单独的地址空间。</li>
-</ol>
-        
-          <a class="article-more-a" href="/2018/11/30/操作系统/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/30/操作系统/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据结构和算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/数据结构和算法/">数据结构和算法</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/30/数据结构和算法/" class="archive-article-date">
-  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a><a href="https://blog.csdn.net/v_july_v/article/details/6105630" target="_blank" rel="noopener">红黑树</a></h3><ul>
-<li>红黑树的基本介绍<br>是一种二叉查找树，满足二叉查找树的一般性质，并且每个节点上都存储一个表示颜色的字段（Red 或 Black），通过颜色限制确保没有一条路径比其他路径长 2 倍，相对平衡的一种树状结构。<br><strong>保证了红黑树的查找、插入、删除的时间复杂度最坏为O(log n)</strong></li>
-<li>红黑树的性质<ol>
-<li>根结点是黑色。</li>
-<li>树尾端的 Null 指针或 Null 结点是黑色的。</li>
-<li>红色节点的子树都是黑色的。</li>
-<li>对于任意结点，它到最底叶子结点的每条路径都包含相同数目的黑结点。</li>
-</ol>
-</li>
-<li>红黑树的插入操作<br>先进行二叉查找树的插入，然后把插入结点置为红色，最后进行对红黑树的颜色修复。<br>红黑树插入操作的颜色修复 5 个步骤：当前结点现在指向插入结点。<ol>
-<li>当前结点的 <strong>父结点是黑色</strong> ：并不会违反红黑树的性质（可以终止算法）。</li>
-<li>当前的是 <strong>根结点</strong> ：说明只违反根结点是黑色的性质，只需把插入结点置为黑色即可（可以终止算法）。</li>
-<li>当前结点的 <strong>父节点是红色</strong> 分 3 种情况讨论，这个是一个递归的操作，直到当前结点指向 Null：<br>3.1. 当前结点的 <strong>父结点是红色</strong> 且 <strong>父结点的兄弟结点是红色</strong> ：当前结点的父节点和父节点的兄弟结点置黑，当前结点的祖父结点置红， <strong>当前结点指向祖父结点</strong> 。（继续第三步判断）。<br>3.2. 当前结点的 <strong>父结点是红色</strong> 且 <strong>父结点的兄弟结点是黑色</strong> ，插入结点是右结点 ：将当前结点指向父节点，在当前结点进行 <strong>平衡二叉树的左旋操作</strong> 。（继续第三步判断）<br>3.3 当前结点是 <strong>父结是红色</strong> 且 <strong>父结点的兄弟结点是黑色</strong> ，插入结点是左结点 ：当前结点的父节点置黑，祖父结点置红，然后当前结点指向祝福结点， 在当前结点进行 <strong>平衡二叉树的右旋操作</strong> 。（继续第三步判断）</li>
-<li>最后把根节点涂为黑色，即可恢复红黑树的平衡。</li>
-</ol>
-</li>
-<li><p>红黑树的删除操作<br>先进行对二叉查找树的删除操作，然后进行对红黑树的颜色修复。<br>红黑树删除操作的颜色修复 个步骤：当前结点现在指向删除结点的位置。</p>
-<ol>
-<li><strong>当前结点是红色</strong> ：则红黑树的性质依旧保持。（可以终止算法）</li>
-<li><strong>当前结点是黑色</strong><br>2.1 当前结点是 <strong>黑 + 黑</strong> 且 <strong>兄弟结点是红色</strong> （即：父节点和兄弟节点的子结点全为黑）：把当前结点的父结点置红和兄弟结点置黑。（继续第二步的判断）<br>2.2  当前结点是 <strong>黑 + 黑</strong> 且 <strong>兄弟结点是黑色</strong> 且 <strong>兄弟结点的子结点全为黑</strong> ：把当前结点和兄弟结点中抽取一重黑色追加到父结点上，把父结点当成新的当前结点。（继续第二步的判断）<br>2.3 当前结点是 <strong>黑 + 黑</strong> 且 <strong>兄弟结点是黑色</strong> 且 <strong>兄弟结点左子树是红色，右子树是黑色</strong> ：把兄弟结点染红，兄弟左子节点染黑，之后再在兄弟节点为支点解右旋。（继续第二步的判断）<br>2.4 当前结点是 <strong>黑 + 黑</strong> 且 <strong>兄弟结点是黑色</strong> 且 <strong>兄弟结点右子树是红色，左子树随意</strong> ：把兄弟节点染成当前节点父节点的颜色，把当前节点父节点染成黑色，兄弟节点右子染成黑色，之后以当前节点的父节点为支点进行左旋。（此时算法结束，已经修复红黑树颜色平衡）<br><strong>注明：“黑 + 黑” 表示格式是 “自身颜色 + 继承父结点的颜色”</strong></li>
-</ol>
-        
-          <a class="article-more-a" href="/2018/11/30/数据结构和算法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/30/数据结构和算法/">展开全文 >></a>
         </p>
       
 
