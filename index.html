@@ -145,242 +145,102 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-操作系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-计算机网络" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/23/操作系统/">操作系统</a>
+      <a class="article-title" href="/2019/01/02/计算机网络/">计算机网络</a>
     </h1>
   
 
         
-        <a href="/2018/12/23/操作系统/" class="archive-article-date">
-  	<time datetime="2018-12-23T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-23</time>
+        <a href="/2019/01/02/计算机网络/" class="archive-article-date">
+  	<time datetime="2019-01-02T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="附件：重要部分的习题理解，看了就会那种。"><a href="#附件：重要部分的习题理解，看了就会那种。" class="headerlink" title="附件：重要部分的习题理解，看了就会那种。"></a><a href="https://github.com/0HongTao0/Blog/blob/master/pic/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%B9%E5%BA%94%E4%B9%A0%E9%A2%98.pptx" target="_blank" rel="noopener">附件：重要部分的习题理解，看了就会那种。</a></h2><h3 id="磁盘存储器的管理"><a href="#磁盘存储器的管理" class="headerlink" title="磁盘存储器的管理"></a>磁盘存储器的管理</h3><ul>
-<li><strong>磁盘文件的链接组织方式</strong><ol>
-<li>连续组织：连续分配方法要求每个文件在磁盘上占有一组连续的块。这样所形成的文件结构称为顺序文件结构，此时的物理文件称为顺序文件。<br><img src="https://upload-images.jianshu.io/upload_images/5853159-daa9e2f8a9e6c3aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480/format/webp" alt="连续分配"></li>
-<li>隐式链接：文件目录的每个目录项中都必须含有指向链接文件的第一个盘块和最后一个盘块的指针。<br><img src="https://upload-images.jianshu.io/upload_images/5853159-c466c43bbd0b1733.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480/format/webp" alt="隐式链接"></li>
-<li>显式链接：用于链接文件各物理块的指针，显式地存放在内存的一张链接表中。该表在整个磁盘仅设置一张。<br><img src="https://upload-images.jianshu.io/upload_images/5853159-82857d166a7ee990.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/348/format/webp" alt="显式链接"></li>
-<li>单级索引组织方式：每个文件对应的盘块集中在一起，在访问某个文件时候，将该文件所对应的盘块号一起调入内存。<br><img src="https://upload-images.jianshu.io/upload_images/5853159-bb611eb9b8345da8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/514/format/webp" alt="单级索引组织方式"></li>
-<li>多级索引组织方式<br><img src="https://upload-images.jianshu.io/upload_images/5853159-17e61aeece5fd1a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/584/format/webp" alt="多级索引组织方式"></li>
-<li>混合索引方式<br><img src="https://upload-images.jianshu.io/upload_images/5853159-9616543178004e72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/562/format/webp" alt="混合索引方式"></li>
-</ol>
-</li>
-<li><strong>文件存储空间的管理</strong><br>在磁盘上除了需要文件分配表，还需要设置一张 <strong>磁盘分配表</strong>，用于记录可供分配的存储空间。<ul>
-<li>存储空间的管理方法<ol>
-<li>空闲表法（效率低）<br><img src="https://upload-images.jianshu.io/upload_images/5853159-0e4943cc3dafc6ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/326/format/webp" alt="空闲盘块表"></li>
-<li>空闲链表法（效率低）</li>
-<li><strong>位示图法</strong><br><img src="https://pic2.zhimg.com/80/v2-3c615e6e6f5c2109c6cf27fecd0d816d_hd.jpg" alt="位示图"><br>盘块的分配：顺序扫描位示图，寻找一个或一组值为 “0”(空闲)位；将找到的一个或一组二进制位转换成相应的盘块号（b = n(i -1) + j ）；修改位示图 map[i, j] = 1。<br>盘块的回收：将回收盘块的盘块号转换成位示图中的行号和列号（i= (b -1)DIV n + 1 ， j = (b -1)MOD n + 1 ）；修改位示图。令map[i,j]=0；</li>
-<li>组成链接法</li>
-</ol>
-</li>
+        <h3 id="OSI-七层模型"><a href="#OSI-七层模型" class="headerlink" title="OSI 七层模型"></a>OSI 七层模型</h3><ul>
+<li>OSI 七层协议从下到上分别为 物理层，数据链路层，网络层，传输层，会话层，表达层，应用层。一般会将 会话层，表达层合并进应用层，形成五层协议进行学习。</li>
+<li>OSI 中各层的协议簇</li>
 </ul>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">OSI</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:center">协议簇</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">应用层</td>
+<td style="text-align:center">文件传输、电子邮件、文件服务、虚拟终端</td>
+<td style="text-align:center">TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet</td>
+</tr>
+<tr>
+<td style="text-align:center">表示层</td>
+<td style="text-align:center">数据格式化，代码转换，数据加密</td>
+<td style="text-align:center">没有协议</td>
+</tr>
+<tr>
+<td style="text-align:center">会话层</td>
+<td style="text-align:center">解除或建立与别的接点的联系</td>
+<td style="text-align:center">没有协议</td>
+</tr>
+<tr>
+<td style="text-align:center">传输层</td>
+<td style="text-align:center">提供端对端的接口</td>
+<td style="text-align:center">TCP，UDP</td>
+</tr>
+<tr>
+<td style="text-align:center">网络层</td>
+<td style="text-align:center">为数据包选择路由</td>
+<td style="text-align:center">IP，ICMP，RIP，OSPF，BGP，IGMP</td>
+</tr>
+<tr>
+<td style="text-align:center">数据链路层</td>
+<td style="text-align:center">传输有地址的帧以及错误检测功能</td>
+<td style="text-align:center">SLIP，CSLIP，PPP，ARP，RARP，MTU</td>
+</tr>
+<tr>
+<td style="text-align:center">物理层</td>
+<td style="text-align:center">以二进制数据形式在物理媒体上传输数据</td>
+<td style="text-align:center">ISO2110，IEEE802。IEEE802.2</td>
+</tr>
+</tbody>
+</table>
 <hr>
-<h3 id="磁盘存储的性能和调度"><a href="#磁盘存储的性能和调度" class="headerlink" title="磁盘存储的性能和调度"></a>磁盘存储的性能和调度</h3><ul>
-<li>改善磁盘系统性能的方法<ol>
-<li>选择好的磁盘调度算法，减少磁盘的寻道时间。</li>
-<li>提高磁盘的 I/O 速度，提高对文件的访问速度。</li>
-<li>采取冗余技术，提高磁盘系统的可靠性。</li>
-</ol>
+<h3 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a>TCP/UDP</h3><ul>
+<li><p>TCP 和 UDP 的区别<br>TCP 是传输控制协议，是有连接的、可靠的、全双工通信协议。<br>UDP 是用户数据报协议，是无连接的，不可靠的的协议。</p>
 </li>
-<li>磁盘的结构和布局<br><img src="https://segmentfault.com/img/bV9Xny?w=1023&amp;h=587" alt="磁盘的结构和布局"></li>
-<li><strong>磁盘调度算法</strong>（通过例子学习）<ol>
-<li>先来先服务（FCFS）<br><img src="https://img-blog.csdnimg.cn/20181031222442555.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0OTAyNDM3,size_16,color_FFFFFF,t_70" alt="FCFS 调度算法"></li>
-<li>最短寻道时间优先（SSTF）<br><img src="https://img-blog.csdnimg.cn/20181031222758867.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0OTAyNDM3,size_16,color_FFFFFF,t_70" alt="SSTF 调度算法"></li>
-<li>扫描算法（SCAN）：先往一个方向扫，当该方向没有需要磁道调度则往回扫。<br><img src="https://img-blog.csdnimg.cn/20181031223619951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0OTAyNDM3,size_16,color_FFFFFF,t_70" alt="SCAN 调度算法"></li>
-<li>循环扫描算法（CSCAN）：先往一个方向扫，当该方向没有需要磁道调度则 <strong>跳到另一方向的第一个磁道开始扫描</strong>。<br><img src="https://img-blog.csdnimg.cn/20181031223942351.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0OTAyNDM3,size_16,color_FFFFFF,t_70" alt="CSCAN 调度算法"></li>
-</ol>
-</li>
-</ul>
-<hr>
-<h3 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a>虚拟存储器</h3><ul>
-<li>虚拟存储器：具有请求调入和置换功能，能从逻辑上对内存容量加以扩充的一种存储器系统。其逻辑容量由内存容量和外存容量之和所决定，其运行速度接近于内存速度，而每位的成本又接近于外存。虚拟存储器的实现建立在 <strong>离散分配存储器管理方式</strong> 的基础上。</li>
-<li>虚拟存储器的特征：多次性；对换性；虚拟性；</li>
-<li>请求分页存储管理方式 = 分页系统 + 请求调页 + 页面置换<br><img src="https://upload-images.jianshu.io/upload_images/5853159-2af551229ffecc6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/662/format/webp" alt="请求分页中的地址变换过程"></li>
-<li>内存分配策略<ol>
-<li>固定分配局部置换：当进程在运行中发现却页，只能从分配给该进程的 n 个页面中选 1 页换出，然后调入 1 页。（进程总页数不变）</li>
-<li>可变分配全局置换：当进程发现缺页时，由系统从空闲物理块 队列中取出一个物理块分配给该进程，并将欲调入的(缺)页装入其中。仅当空闲物理块用完了才从内存中选择一页调出。</li>
-<li>可变分配局部置换：如果进程在运行中频繁地发生缺页中断，则系统须再为该进程分配若干附加的物理块，直至该进程的缺页 率减少到适当程度为止；反之，若一个进程在运行过程中的缺页率特别低，则此时可适当减少分配给该进程的物理块数但不应引起其缺页率的明显增 则此时可适当减少分配给该进程的物理块数，但不应引起其缺页率的明显增加。</li>
-</ol>
-</li>
-<li><strong>页面置换算法</strong><ol>
-<li>最佳置换算法（一个理想状态算法，无法实现）：其所选择的被淘汰页面，将是以后永不使用的，或许是在长(未来)时间内不再被访问被淘汰页面，将是以后永不使用的，或许是在长(未来)时间内不再被访问的页面。<br><img src="https://img-blog.csdn.net/20180519152358280?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyOTk4MTUz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="利用最佳页面置换算法时的置换图"></li>
-<li>先进先出页面置换算法（FIFO）：该算法总是淘汰先进入内存的页面，即选择在内存中驻 留时间久的页面予以淘汰。<br><img src="https://img-blog.csdn.net/20180519152711829?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyOTk4MTUz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="利用 FIFO 置换算法时的置换图"></li>
-<li>最近最久未使用置换算法（LRU）：选择近久未使用的页面予以淘汰。该算法赋予每个页面一个访问字段，用来记录一个页 面自上次被访问以来所经历的时间t，当须淘汰一个页面时，选择现有页面中其t值大的，即近久未使用的页面予以淘汰。<br><img src="https://img-blog.csdn.net/20180519153146905?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyOTk4MTUz/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="利用 LRU 置换算法时的置换图"></li>
-<li>最少使用置换算法（LFU）</li>
-</ol>
-</li>
-<li>请求分段存储管理方式<br><img src="https://img-blog.csdn.net/20180606215700696?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NoZW5fWW9uZ2Jv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="请求分段系统中的中断处理过程"><br><img src="https://img-blog.csdn.net/20180606215712204?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NoZW5fWW9uZ2Jv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="请求分段系统的地址变换过程"></li>
-</ul>
-<hr>
-<h3 id="存储器管理"><a href="#存储器管理" class="headerlink" title="存储器管理"></a>存储器管理</h3><ul>
-<li>存储器的层次结构(存储介质层次越高，越靠近 CPU，存储介质的访问速度越快，价格越高，配置的存储容量越少)<br><img src="https://img-blog.csdn.net/20140214214644421?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvR2VuaXVzX0xH/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="计算机系统存储层次示意"></li>
-<li>程序的在系统的运行过程<br><img src="http://c.biancheng.net/cpp/uploads/allimg/140630/1-1406301T554425.jpg" alt="对用户程序的处理步骤"><ol>
-<li>编译，由 Compiler 编译程序对用户的源程序进行编译，形成若干个 <strong>目标模块（Object Module）</strong>。</li>
-<li>链接，由 Linker 链接程序对 <strong>目标模块</strong> 以及它们所需要的库函数链接在一起，形成 <strong>装入模块（Load Module）</strong>。</li>
-<li>装入，由 Loader 装入程序将 <strong>装入模块</strong> 装入内存。</li>
-</ol>
-</li>
-<li>程序的装入<br><strong>逻辑地址：作业程序地址。物理地址（绝对地址）：运行内存地址。</strong><ol>
-<li>绝对装入方式：计算机系统很小，单道程序，用户程序经过编译后产生 <strong>绝对地址（物理地址）</strong>。物理地址 = 逻辑地址</li>
-<li>可重定位装入方式：多道程序，根据内存的具体情况装入模块撞到内存的适当位置。 物理地址 = 逻辑地址 + 内存偏移量</li>
-<li>动态运行时的装入方式：在需要运行过程中将程序的逻辑地址改为物理地址。 物理地址 = 逻辑地址 + 重定位寄存器</li>
-</ol>
-</li>
-<li>程序的链接<ol>
-<li>静态链接方式：在运行之前链接成一个完整的装配模块。（对相对地址进行修改，变换外部调用符号）</li>
-<li>装入时动态链接：边装入边链接（便于修改和更新，便于实现对目标模块的共享）</li>
-<li>运行时动态链接：某些模块的链接推迟到程序执行时才进行</li>
-</ol>
-</li>
-<li>连续分配存储器管理方式<ol>
-<li>单一连续分配</li>
-<li>固定分区分配（分区大小相等，分区大小不等）</li>
-<li>动态分区分配：根据进程的实际需要，动态分配内存空间。<br>内存分配流程图：<br><img src="https://img-blog.csdn.net/20180606211357210?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NoZW5fWW9uZ2Jv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="内存分配流程"><br>内存回收的情况：<br>(1) 回收区与插入点的前一个空闲分区F1相邻接，此时应将回收区与插入点的前一分区合并，不必为回收分区分配新表项，而只需修改其前一分区F1的大小。<br>(2) 回收区与插入点的后一空闲分区F2相邻接，此时也可将两分区合并，形成新的空闲分区，但用回收区的首址作为新空闲区的首址，大小为两者之和。<br>(3) 回收区同时与插入点的前、后两个分区邻接。此时将三个分区合并，使用F1的表项和F1的首址，取消F2的表项，大小为三者之和。<br>(4) 回收区既不与F1邻接，又不与F2邻接。这时应为回收区单独建立一新表项，填写回收区的首址和大小，并根据其首址插入到空闲链中的适当位置。</li>
-<li>基于顺序探索的动态分区分配算法<br>首次适应算法：从链首开始顺序迭代，找第一个能满足的。<br>循环首次适应算法：从上一次找到的空闲分区的下一个分区开始迭代，找第一个能满足的。<br>最佳适应算法：空闲分区由小到大排序，找到第一个能满足的。（能满足要求的最小分区）<br>最坏适应算法：空闲分区由大到小排序，选第一个是否满足。（选最大的分区）</li>
-<li>基于索引搜索的动态分区分配算法：快速适应算；伙伴系统；哈希算法；</li>
-<li>动态可重定位分区分配<br><strong>紧凑：将零碎的分区通过地址移动变换成连续整块的分区和连续的空闲分区，但是消耗系统效率。</strong><br><img src="https://img-blog.csdn.net/20180606211654868?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NoZW5fWW9uZ2Jv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="动态重定位示意图"><br><img src="https://img-blog.csdn.net/20180606211709523?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NoZW5fWW9uZ2Jv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="动态分区分配算法流程图"></li>
-</ol>
-</li>
-<li>对换：把内存中暂时不能运行的进程或者暂时不用的程序和数据换出到外存上，以便腾出内存空间。<ol>
-<li>对换的类型：整体兑换；分页（分段）对换；</li>
-<li>进程的换出：将内存中的某些进程调出至对换区；</li>
-<li>进程的换入：对换进程将定时执行换入操作，从 PCB 集合中找到 “就绪” 状态但已换出的进程。</li>
-</ol>
-</li>
-<li>分页存储管理方式<br><img src="https://upload-images.jianshu.io/upload_images/5750276-694f906c0a8145ea..png?imageMogr2/auto-orient/strip%7CimageView2/2/w/298/format/webp" alt="页表的作用"><br><img src="http://my.csdn.net/uploads/201208/03/1343991424_1705.png" alt="分页系统的地址变换机构"><br><img src="http://my.csdn.net/uploads/201208/03/1343992527_2941.png" alt="具有快表的地址变换机构"></li>
-<li>分段式存储管理方式<br><img src="http://my.csdn.net/uploads/201208/03/1343998285_4135.png" alt="利用段表实现地址映射"><br><img src="http://my.csdn.net/uploads/201208/03/1344000618_9034.png" alt="分段系统的地址变换过程"></li>
-<li>段页式存储管理方式<br><img src="http://my.csdn.net/uploads/201208/04/1344085996_8950.png" alt="利用段表和页表实现地址映射"><br><img src="http://my.csdn.net/uploads/201208/04/1344086292_1463.png" alt="段页式系统中的地址变换机构"></li>
-<li>分页和分段的区别<br>(1) 页是信息的物理单位，分页是为实现离散分配方式，以消减内存的外零头，提高内存的利用率。或者说，分页仅仅是由于系统管理的需要而不是用户的需要。段则是信息的逻辑单位，它含有一组其意义相对完整的信息。分段的目的是为了能更好地满足用户的需要。<br>(2) 页的大小固定且由系统决定，由系统把逻辑地址划分为页号和页内地址两部分，是由机器硬件实现的，因而在系统中只能有一种大小的页面；而段的长度却不固定，决定于用户所编写的程序，通常由编译程序在对源程序进行编译时，根据信息的性质来划分。<br>(3) 分页的作业地址空间是一维的，即单一的线性地址空间，程序员只需利用一个记忆符，即可表示一个地址；而分段的作业地址空间则是二维的，程序员在标识一个地址时，既需给出段名，又需给出段内地址。 </li>
-</ul>
-<hr>
-<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><ul>
-<li>引起死锁的主要资源问题是：需要采用互斥访问方式方法的，不可被抢占的资源（即在进程同步中的 <strong>临界资源</strong>，如打印机，数据文件，队列，信号量等）</li>
-<li>资源类型<ol>
-<li>可重用性资源：可供用户重复使用多次的资源；只能分配给一个进程使用，不允许多进程共享；单元数目是相对固定，进程运行期间无法创建也不能删除；</li>
-<li>可消耗性资源：有进程动态创建和消耗；单元数目在进程运行期间是可以不断变化的，可以在程序运行期间进行创建和回收；</li>
-<li>可抢占性资源：某进程获得可抢占性资源后，该资源可以被另一个进程或系统抢占；</li>
-<li>不可抢占性资源：进程获得不可抢占性资源后，只能在进程用完后将自行释放；</li>
-</ol>
-</li>
-<li>死锁的起因<ol>
-<li><strong>竞争不可抢占性资源</strong></li>
-<li><strong>竞争可消耗性资源</strong></li>
-<li>进程推进顺序不当</li>
-</ol>
-</li>
-<li><strong>死锁的定义：在一组死锁进程中，每个进程都在等待另一个死锁进程所占有的资源</strong></li>
-<li>产生死锁的条件<ol>
-<li>互斥条件：资源只能被一个进程持有</li>
-<li>请求和保持：进程持有一个资源，又请求其他新资源，新资源被其他进程占有，导致进程进入阻塞</li>
-<li>不可抢占：已经持有的资源无法被其他进程抢占，只能进程运行完自行释放</li>
-<li>循环等待：一组进程运行期间形成 <strong>进程——资源循环链</strong></li>
-</ol>
-</li>
-<li>处理死锁的方法：预防死锁；避免死锁；检测死锁；解除死锁；</li>
-<li>预防死锁<ol>
-<li>破坏 “请求与保持” 条件：请求资源时，不能持有不可抢占资源。</li>
-<li>破坏 ”不可抢占” 条件：当进程持有不可抢占资源并请求新资源时，必须要释放所有保持的资源。</li>
-<li>破坏 “循环等待” 条件</li>
-</ol>
-</li>
-<li><p>避免死锁<br>允许进程动态申请资源，但在进行资源分配时必须要先计算此次资源分配的安全性。（若分配会导致系统进入不安全状态，则不能将资源分配给该进程）</p>
+<li><p><strong>TCP 三次握手（建立连接）</strong><br>TCP 建立连接的过程需要三次握手，需要在客户端和服务器之间交换三个 TCP 报文段。</p>
 <ol>
-<li>系统安全状态：系统能按某种进程推进顺序为每个进程分配资源，直到满足每个进程对资源的最大需求，并且能使每个进程顺利完成。</li>
-<li><p><strong>银行家算法</strong><br>一个进程进入系统要声明所需要的资源的最大单元项目（不能超过系统总资源）<br>进程请求一组资源时，首先要确定是否有足够的资源分配给该进程。</p>
-<ul>
-<li>资源足够，确定系统是否处于安全状态。<ul>
-<li>分配资源后系统处于安全状态，则可以进行分配。</li>
-<li>分配资源后系统处于不安全状态，则需要进行资源回滚。</li>
-</ul>
-</li>
-<li>资源不够，不能进行分配。</li>
-</ul>
-<p><strong>银行家算法的例子学习：</strong>（不写代码过程太繁琐，直接看例子来理解更容易，书本 P113，或者网上例子）</p>
-</li>
+<li>首先服务器需要处于监听客户端连接状态，客户端向服务器发送请求连接报文。</li>
+<li>然后服务器收到请求连接报文后，若果同意连接，需要向客户端发送确认连接报文。</li>
+<li>最后客户端收到服务器的确认连接报文，客户端还要向服务器发送确认连接报文，最终 TCP 建立连接。</li>
 </ol>
+<p>在 TCP 建立连接过程中要让服务器和客户端知道双方是否存在，以及知道对方的一些信息、参数，比如最大窗口大小，确认号 ACK 等待。</p>
 </li>
-<li>死锁的检测<ol>
-<li>资源分配图: P 是进程， R 是资源。<br><img src="https://upload-images.jianshu.io/upload_images/5853159-eb277b120721a49c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp" alt="资源分配图"></li>
-</ol>
+<li><p>TCP 四次握手<br>TCP 四次握手只是将在三次握手中的服务器向客户端发送确认连接报文拆成 2 个确认连接报文，分别发送 2 个确认连接报文，它们的效果是一样的，只不过是服务器发送多了一次报文。</p>
 </li>
-<li>死锁的解除<ol>
-<li>抢占资源：从一个或多个进程种抢占足够数量的资源分配给死锁进程。</li>
-<li>终止（或撤销）进程：终止或撤销进程中的一个或多个死锁进程，直到打破循环环路。（终止所有进程或者逐个终止进程）</li>
-</ol>
+<li><p>TCP 两次握手出现的问题？<br>假如是两次握手就建立连接，客户端先发送了一个连接请求报文，但是由于网络延迟原因，导致客户端连接超时而放弃了这次连接，但是在这时，之前客户发送的已失效的请求连接报文到达了服务器，而服务器响应了这次请求，并且发送了确认连接报文给客户端，这时建立连接，但是客户端并不会理会这个确认连接报文而导致服务器一直处于连接状态，客户端处于未连接状态，消耗服务器的资源。</p>
 </li>
-</ul>
-<hr>
-<h3 id="处理机调度"><a href="#处理机调度" class="headerlink" title="处理机调度"></a>处理机调度</h3><ul>
-<li>处理机调度的层次<ol>
-<li>高级调度（对象：作业）</li>
-<li>低级调度（对象：进程）</li>
-<li>终极调度（对象：内存）</li>
-</ol>
-</li>
-<li>处理机调度算法的目标：CPU 利用率高，符合系统要求。<ol>
-<li>处理机调度算法的共同目标：资源利用率（CPU工作时间/（CPU 工作时间 + CPU 空闲时间））；公平性；平衡性；策略强制性强；</li>
-<li><strong>批处理系统的目标</strong>：平均周转时间短（周转时间：提交作业至作业完成）；系统吞吐量高；处理机利用率高；</li>
-<li>分时系统的目标：响应时间快；均衡性；</li>
-<li>实时系统的目标：截至时间的保证；可预测性；</li>
-</ol>
-</li>
-<li><strong>作业调度</strong><ol>
-<li>作业：包含通常的程序和数据，还配有一份作业说明书（系统根据说明书来对程序的运行进行控制）</li>
-<li>作业步：“编译”作业步；”链接装配”作业步；“运行”作业步；</li>
-<li>作业控制块（JCB）：保存系统对作业进行管理和调度的所需的全部信息</li>
-</ol>
-</li>
-<li>作业运行的三个阶段和三个状态<ol>
-<li>收容阶段：建立 JCB，作业进入“后备状态”</li>
-<li>运行阶段：建立 PCB，程序进入“运行状态”</li>
-<li>完成阶段：回收作业的 JCB 和所有资源，作业进入”完成状态”</li>
-</ol>
-</li>
-<li>作业调度的任务<ol>
-<li>接纳多少个作业？根据系统的 CPU 和内存来决定，尽最大可能提高资源和 CPU 的利用率</li>
-<li>接纳哪些作业？取决于采用的 <strong>调度算法</strong> ，各调度算法有不同的特特点和属性。</li>
-</ol>
-</li>
-<li><strong>作业调度算法</strong><br><strong>带权周转时间 = 周转时间 / 服务时间；周转时间 = 完成时间 - 到达时间；</strong><ol>
-<li>先来先服务调度算法（FCFS）：系统按照作业到达的先后次序来进行调度（优先调度在系统等待时间最长的作业）</li>
-<li>短作业优先的调度算法（SJF）：以作业的长短来计算优先级；作业越短，越快被调度；作业的长短是作业要求的运行时间；<br>缺点：必须预知作业的运行时间；对长作业非常不利；人机无法实现交互；未考虑作业的紧迫程度；</li>
-<li>优先级调度算法（PSA）：在外部赋予作业响应的优先级，根据作业的优先级进行调度；</li>
-<li>高相应比优先调度算法（HRRN)：响应比 Rp = （等待时间 + 服务时间） / 服务时间；等待时间越长，响应比相对增加；</li>
-</ol>
-</li>
-<li><strong>进程调度</strong><ol>
-<li>进程调度的任务：保存处理机的现场信息；按某种算法选取进程（从就绪队列中选取）；按处理器分配给进程；</li>
-<li>进程调度机制<br><img src="https://img-blog.csdn.net/20180427154109752?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NoZW5fWW9uZ2Jv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="进程调度机制"></li>
-</ol>
-</li>
-<li><strong>进程调度的方式</strong><ol>
-<li>非抢占方式：一旦处理机分配给某进程，就一直运行下去，直到该进程完成，或者进程发生某事件被阻塞才把处理机分配给其他进程<br>引起进程调度的因素：进程运行完毕或者发生某事件无法继续运行；进程提出 I/O 请求暂停运行；在进程通信或同步过程中执行了某些原语操作（如：Block 原语）；</li>
-<li><strong>抢占方式</strong>：允许调度程序根据某种原则，暂停某个正在执行的进程，将已分配给该进程的处理机重新分配给另一个进程；<br>需要遵循的原则：优先权原则；短进程优先原则；<strong>时间片原则</strong>；</li>
-</ol>
-</li>
-<li><p><strong>进程调度算法</strong><br><strong>带权周转时间 = 周转时间 / 服务时间；周转时间 = 完成时间 - 到达时间；</strong></p>
+<li><p><strong>TCP 四次挥手（释放连接）</strong></p>
 <ol>
-<li>轮转调度算法（基于时间片）<br>基本原理：所有就绪进程按 FCFS 策略排成进程就绪队列，系统设置一定时间（时间片）产生一次中断，激活进程调度程序进行调度，把 CPU 分配给队列，<strong>让该进程执行一个时间片</strong>。<br>切换时机：进程在一个时间片尚未用完就已经执行完，激活进程调度程序，从就绪队列中移除，进行下一次轮转；在一个时间片内，进程尚未完成，计时中断程序被激活，将进程送往就绪队列尾部，进行下一次轮转；<br>时间片大小确定：<strong>一个较为可取的时间片大小是略大于一次典型的交互所需要的时间，使大多数交互式进程能在一个时间片内完成。</strong></li>
-<li>优先级调度算法<br>非抢占式优先级调度算法：等一个进程执行完，分配处理机给最高优先级的进程<br>抢占式优先级调度算法：只要出现另一个优先级更高的进程，调度程序就将处理机分配给新到的的优先级最高的进程<br>优先级类型：静态优先级（在进程创建时确定）；动态优先级（随进程的推进优先级改变）；</li>
-<li>多队列调度算法</li>
-<li>多级反馈队列调度算法(优先级越高，时间片越短)<br><img src="https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=f6230aca750e0cf3a0a246fd3a76de27/eac4b74543a98226a98d8cff8d82b9014b90eb9e.jpg" alt="多级反馈队列调度算法"></li>
-<li>基于公平原则的调度算法</li>
+<li>客户端向服务器发送连接释放报文，并且停止再发送数据，主动关闭 TCP 连接。</li>
+<li>服务器收到连接释放报文，向客户端发送确认释放报文，服务器的 TCP 进入半关闭状态。（服务器向客户端发送数据客户端还是会接收的）</li>
+<li>服务器再向客户端发送连接释放报文，此时服务器的 TCP 释放连接。</li>
+<li>客户端收到连接释放报文，向服务器发送确认释放报文，客户端进入时间等待状态，时间过了 TCP 完全被释放。</li>
 </ol>
-        
-          <a class="article-more-a" href="/2018/12/23/操作系统/#more">more >></a>
-        
+</li>
+</ul>
+
       
 
       
@@ -392,7 +252,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/23/操作系统/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/01/02/计算机网络/">展开全文 >></a>
         </p>
       
 
@@ -429,20 +289,32 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/13/Android 基础/">Android 基础</a>
+      <a class="article-title" href="/2019/01/01/Android 基础/">Android 基础</a>
     </h1>
   
 
         
-        <a href="/2018/12/13/Android 基础/" class="archive-article-date">
-  	<time datetime="2018-12-13T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-13</time>
+        <a href="/2019/01/01/Android 基础/" class="archive-article-date">
+  	<time datetime="2019-01-01T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="IPC-机制（Inter-Process-Communication）"><a href="#IPC-机制（Inter-Process-Communication）" class="headerlink" title="IPC 机制（Inter-Process Communication）"></a>IPC 机制（Inter-Process Communication）</h3><p>  参考：《Android 开发艺术探索》</p>
+        <h3 id="Volley-的实现原理？"><a href="#Volley-的实现原理？" class="headerlink" title="Volley 的实现原理？"></a>Volley 的实现原理？</h3><ul>
+<li>Volley 是一个网络请求框架，拥有自己的一套缓存机制。</li>
+<li>使用 Volley 首先会初始化一个 RequestQueue（请求队列），这个请求队列包含有网络请求队列和网络请求线程池（默认 4 个线程），返回缓存队列和缓存线程，最重要的包含一个通过主线程 Looper 创建的 Handler。</li>
+<li>通过添加一个 Request 进入 RequestQueue 来进行网络请求，先添加到缓存队列中，判断缓存队列是否存在未过期的相应请求，若存在，取出返回。否则就通过网络请求线程（NetwordDispatcher）获取 request 来进行网络请求。</li>
+<li>网络请求线程通过经过封装的请求工具（HurlStack）进行对 Request 进行请求，获取相应的请求结果（NetwordResponse）。</li>
+<li>最后通过主线程的 Handler 回调请求结果到主线程中处理。</li>
+<li>相同的并且需要缓存的 request 会进入等待队列，也就是说相同的并且需要缓存的 request 只进行一次请求。</li>
+<li>若返回 304，则不会分发第二个相同的网络请求结果。</li>
+<li>http 304 说明请求结果和上次一样，客户端可以继续使用缓存。</li>
+<li>http 204 表示无内容（Not Content）</li>
+</ul>
+<hr>
+<h3 id="IPC-机制（Inter-Process-Communication）"><a href="#IPC-机制（Inter-Process-Communication）" class="headerlink" title="IPC 机制（Inter-Process Communication）"></a>IPC 机制（Inter-Process Communication）</h3><p>  参考：《Android 开发艺术探索》</p>
 <ul>
 <li>Android 为什么需要跨进程通信？<br>Android 是基于 Linux 系统的，在 Linux 系统中进程之间是相互独立的（进程隔离），为了保证安全性和独立性，一个进程不能直接访问另一个进程的空间。</li>
 <li>Android 多进程：在 Android 中使用多进程的唯一方法是给四大组件在 AndroidMenifest 中指定 android:process 属性。</li>
@@ -459,9 +331,12 @@
 </ol>
 </li>
 <li>AIDL 实现跨进程通信<br><img src="https://github.com/0HongTao0/Blog/blob/master/pic/AIDL%20Binder.jpg?raw=true" alt="AIDL 过程图"></li>
+<li>使用 Binder 实现监听服务器时候会通过对象的序列化产生<strong>新的监听接口对象</strong>，导致服务器无法找到要解除的 listener，无法完成解注册。解决的办法是使用 RemoteCallbackList 抽象类来解决，RemoteCallbackList 是一个 Map，Key 是底层 Binder 对象， value 是 监听接口，由跨进程通信时 Binder 是唯一的，所以就可以在 Map 删除监听接口。</li>
+<li>如何在 AIDL 进行权限验证？第一种，在 onBind 中进行验证，若验证不通过则返回 null（自定义一个 permission）。第二种是在服务器端的 onTransact 中进行权限验证，（permission，或通过客户端的 Uid 和 Pid 来验证包名权限等）。</li>
+<li>AIDL 的底层实现？<br>AIDL 是 Android 接口定义语言，通过自己定义 AIDL ，SDK 会自动生成 AIDL 所对应的 Binder 类。客户端通过 Binder 的 Proxy 代理类请求，会转发至 onTransact 方法，进行获取服务端处理和参数序列化处理，然后返回结果给客户端，</li>
 </ul>
         
-          <a class="article-more-a" href="/2018/12/13/Android 基础/#more">more >></a>
+          <a class="article-more-a" href="/2019/01/01/Android 基础/#more">more >></a>
         
       
 
@@ -474,7 +349,193 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/13/Android 基础/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/01/01/Android 基础/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-DataBase" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/26/DataBase/">DataBase</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/26/DataBase/" class="archive-article-date">
+  	<time datetime="2018-12-26T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h3><ul>
+<li>关系数据结构<ol>
+<li>关系（二维表）<br>域：一组具有相同数据类型的值的集合。<br>笛卡尔积：域上的集合运算。<br>D 1× D 2×…× D i…× D n  ＝｛( d 1， d 2，… ， d i，… ， d n )｜ di 属于 Di，i ＝1，2，…， n ｝<br>元组：关系中的每一个元素（对象）<br>分量：笛卡尔积元素的每一个值（对象属性）<br>候选码：关系中某一属性组能唯一标识一个元组，且其子集不能，则该属性称为属性组的候选码。<br>主码：关系有多个候选码，选其中一个为主码；候选码的诸属性成为主属性；</li>
+<li>三类关系<br>基本关系（基本表或基表）：实际存在的表，是实际存储数据的逻辑表示。<br>查询表：查询结果对应的表。<br>视图表：由基本表或其他视图表导出的表，是虚表，不对应实际存储的数据。</li>
+</ol>
+</li>
+<li>关系模式 R(U, D, dom, F)<br>R：关系名；U：属性名集合；D：属性来自的域；dom：属性向域的映像集合；F：属性间的数据依赖关系集合；</li>
+</ul>
+<hr>
+<h3 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h3><ul>
+<li>数据库的四个概念<ol>
+<li>数据（Data）：描述事物的符号记录称为数据。</li>
+<li>数据库（DataBase，DB）：数据库是长期存储在计算机内，有组织，可共享的大量数据的集合。数据库中的数据按一定的数据模型组织，描述和存储， <strong>具有较小的冗余度，较高的数据独立性和易扩展</strong> ，并可为各种用户共享。</li>
+<li>数据库管理系统 （DataBase Management System，DBMS）：科学地组织和存储数据，高效地获取和维护数据。</li>
+<li>数据库系统（DBS）：数据库系统是由数据库、数据库管理系统、应用程序和数据库管理员组成的存储、管理、处理和维护数据的系统。</li>
+</ol>
+</li>
+<li>数据库系统的特点<ol>
+<li>数据结构化：数据库系统实现整体数据的结构化。</li>
+<li>数据的共享性高、冗余度低、且易扩充</li>
+<li>数据独立性高： <strong>物理独立性</strong> 指应用程序和数据库中数据的物理存储相对独立， <strong>逻辑独立性</strong> 是指应用程序与数据库的逻辑结构相互独立。</li>
+<li>数据由数据库管理系统统一管理和控制</li>
+</ol>
+</li>
+<li>数据模型：对现实世界数据特征的抽象<ol>
+<li>概念模型：实体，属性，码，实体型，实体集，联系（实体 - 联系方法 : ER 模型）</li>
+<li>数据模型：数据结构，数据操作，数据完整性约束</li>
+<li>层次模型、网状模型</li>
+<li><strong>关系模型</strong> ：关系（表），元组（行），属性（列），码，域，分量，关系模式，数据操纵（增删改查），完整性约束（实体，参照，用户）。</li>
+</ol>
+</li>
+<li><strong>数据库系统的三级模式结构</strong><ol>
+<li>模式：也称逻辑模式，<strong>数据库中全体数据的逻辑结构和特征的描述</strong>，是所有用户的公共数据数据视图。<strong>(数据库中所有关系对应的关系模式的集合)</strong></li>
+<li>外模式：也称子模式或用户模式，是数据库用户能够看见和使用的局部数据的逻辑结构和特征的描述，是数据库用户的数据视图，是与某一应用有关的数据的逻辑表示。<strong>（数据库中部分数据的逻辑结构和特征的描述）（面向具体的应用程序）</strong></li>
+<li>内模式：也称存储模式，一个数据库只有一个内模式。<strong>数据库中全体数据的物理结构和存储方式的描述</strong>，是数据在数据库内部的组织方式。（存储模式）<br><img src="https://images2018.cnblogs.com/blog/1488975/201809/1488975-20180912205035900-1634261982.png" alt="数据库系统的三级模式结构"></li>
+<li>外模式/模式映像：定义外模式与模式之间的对应关系；每个外模式都有对应的一个 外模式/模式 映像；（保证数据的逻辑独立性）</li>
+<li>模式/内模式映像：定义模式与内模式之间的对应关系；数据库中 模式/内模式 映像是唯一的；（保证数据的物理独立性）</li>
+</ol>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/26/DataBase/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-操作系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/23/操作系统/">操作系统</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/23/操作系统/" class="archive-article-date">
+  	<time datetime="2018-12-23T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="附件：重要部分的习题理解，看了就会那种。"><a href="#附件：重要部分的习题理解，看了就会那种。" class="headerlink" title="附件：重要部分的习题理解，看了就会那种。"></a><a href="https://github.com/0HongTao0/Blog/blob/master/pic/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%B9%E5%BA%94%E4%B9%A0%E9%A2%98.pptx" target="_blank" rel="noopener">附件：重要部分的习题理解，看了就会那种。</a></h2><h3 id="磁盘存储器的管理"><a href="#磁盘存储器的管理" class="headerlink" title="磁盘存储器的管理"></a>磁盘存储器的管理</h3><ul>
+<li><strong>磁盘文件的链接组织方式</strong><ol>
+<li>连续组织：连续分配方法要求每个文件在磁盘上占有一组连续的块。这样所形成的文件结构称为顺序文件结构，此时的物理文件称为顺序文件。<br><img src="https://upload-images.jianshu.io/upload_images/5853159-daa9e2f8a9e6c3aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480/format/webp" alt="连续分配"></li>
+<li>隐式链接：文件目录的每个目录项中都必须含有指向链接文件的第一个盘块和最后一个盘块的指针。<br><img src="https://upload-images.jianshu.io/upload_images/5853159-c466c43bbd0b1733.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480/format/webp" alt="隐式链接"></li>
+<li>显式链接：用于链接文件各物理块的指针，显式地存放在内存的一张链接表中。该表在整个磁盘仅设置一张。<br><img src="https://upload-images.jianshu.io/upload_images/5853159-82857d166a7ee990.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/348/format/webp" alt="显式链接"></li>
+<li>单级索引组织方式：每个文件对应的盘块集中在一起，在访问某个文件时候，将该文件所对应的盘块号一起调入内存。<br><img src="https://upload-images.jianshu.io/upload_images/5853159-bb611eb9b8345da8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/514/format/webp" alt="单级索引组织方式"></li>
+<li>多级索引组织方式<br><img src="https://upload-images.jianshu.io/upload_images/5853159-17e61aeece5fd1a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/584/format/webp" alt="多级索引组织方式"></li>
+<li>混合索引方式<br><img src="https://upload-images.jianshu.io/upload_images/5853159-9616543178004e72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/562/format/webp" alt="混合索引方式"></li>
+</ol>
+</li>
+<li><p><strong>文件存储空间的管理</strong><br>在磁盘上除了需要文件分配表，还需要设置一张 <strong>磁盘分配表</strong>，用于记录可供分配的存储空间。</p>
+<ul>
+<li>存储空间的管理方法<ol>
+<li>空闲表法（效率低）<br><img src="https://upload-images.jianshu.io/upload_images/5853159-0e4943cc3dafc6ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/326/format/webp" alt="空闲盘块表"></li>
+<li>空闲链表法（效率低）</li>
+<li><strong>位示图法</strong><br><img src="https://pic2.zhimg.com/80/v2-3c615e6e6f5c2109c6cf27fecd0d816d_hd.jpg" alt="位示图"><br>盘块的分配：顺序扫描位示图，寻找一个或一组值为 “0”(空闲)位；将找到的一个或一组二进制位转换成相应的盘块号（b = n(i -1) + j ）；修改位示图 map[i, j] = 1。<br>盘块的回收：将回收盘块的盘块号转换成位示图中的行号和列号（i= (b -1)DIV n + 1 ， j = (b -1)MOD n + 1 ）；修改位示图。令map[i,j]=0；</li>
+<li>组成链接法</li>
+</ol>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2018/12/23/操作系统/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/23/操作系统/">展开全文 >></a>
         </p>
       
 
@@ -655,75 +716,6 @@
 
 
   
-    <article id="post-随手记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/随手记/">随手记</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/30/随手记/" class="archive-article-date">
-  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>JAVA 是静态的强类型语言，JAVA 反射是运行时的自省能力。</li>
-<li><strong>反射机制</strong> 的了解和掌握程度 java.lang 或 java.lang.reflect。</li>
-<li>运行时修改成员访问限制</li>
-<li>什么是CGLIB?  CGLIB是一个功能强大，高性能的代码生成包。它为没有实现接口的类提供代理，为JDK的动态代理提供了很好的补充。通常可以使用Java的动态代理创建代理，但当要代理的类没有实现接口或者为了更好的性能，CGLIB是一个好的选择。
-        
-          <a class="article-more-a" href="/2018/11/30/随手记/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/30/随手记/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -757,68 +749,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/11/30/设计模式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/计算机网络/">计算机网络</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/30/计算机网络/" class="archive-article-date">
-  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/30/计算机网络/">展开全文 >></a>
         </p>
       
 
@@ -1072,7 +1002,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Me~滔
+    		&copy; 2019 Me~滔
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

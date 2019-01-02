@@ -53,7 +53,7 @@
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1048215/201802/1048215-20180225230728426-2048803863.png">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1048215/201802/1048215-20180225230737441-833727159.png">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/656630-33723c9b511ef3d3.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240">
-<meta property="og:updated_time" content="2018-12-23T15:28:43.348Z">
+<meta property="og:updated_time" content="2019-01-02T07:19:56.351Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统">
 <meta name="twitter:description" content="附件：重要部分的习题理解，看了就会那种。磁盘存储器的管理 磁盘文件的链接组织方式 连续组织：连续分配方法要求每个文件在磁盘上占有一组连续的块。这样所形成的文件结构称为顺序文件结构，此时的物理文件称为顺序文件。 隐式链接：文件目录的每个目录项中都必须含有指向链接文件的第一个盘块和最后一个盘块的指针。 显式链接：用于链接文件各物理块的指针，显式地存放在内存的一张链接表中。该表在整个磁盘仅设置一张。 单">
@@ -213,7 +213,8 @@
 <li>混合索引方式<br><img src="https://upload-images.jianshu.io/upload_images/5853159-9616543178004e72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/562/format/webp" alt="混合索引方式"></li>
 </ol>
 </li>
-<li><strong>文件存储空间的管理</strong><br>在磁盘上除了需要文件分配表，还需要设置一张 <strong>磁盘分配表</strong>，用于记录可供分配的存储空间。<ul>
+<li><p><strong>文件存储空间的管理</strong><br>在磁盘上除了需要文件分配表，还需要设置一张 <strong>磁盘分配表</strong>，用于记录可供分配的存储空间。</p>
+<ul>
 <li>存储空间的管理方法<ol>
 <li>空闲表法（效率低）<br><img src="https://upload-images.jianshu.io/upload_images/5853159-0e4943cc3dafc6ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/326/format/webp" alt="空闲盘块表"></li>
 <li>空闲链表法（效率低）</li>
@@ -222,6 +223,7 @@
 </ol>
 </li>
 </ul>
+<a id="more"></a>
 </li>
 </ul>
 <hr>
@@ -408,15 +410,13 @@
 <li><strong>抢占方式</strong>：允许调度程序根据某种原则，暂停某个正在执行的进程，将已分配给该进程的处理机重新分配给另一个进程；<br>需要遵循的原则：优先权原则；短进程优先原则；<strong>时间片原则</strong>；</li>
 </ol>
 </li>
-<li><p><strong>进程调度算法</strong><br><strong>带权周转时间 = 周转时间 / 服务时间；周转时间 = 完成时间 - 到达时间；</strong></p>
-<ol>
+<li><strong>进程调度算法</strong><br><strong>带权周转时间 = 周转时间 / 服务时间；周转时间 = 完成时间 - 到达时间；</strong><ol>
 <li>轮转调度算法（基于时间片）<br>基本原理：所有就绪进程按 FCFS 策略排成进程就绪队列，系统设置一定时间（时间片）产生一次中断，激活进程调度程序进行调度，把 CPU 分配给队列，<strong>让该进程执行一个时间片</strong>。<br>切换时机：进程在一个时间片尚未用完就已经执行完，激活进程调度程序，从就绪队列中移除，进行下一次轮转；在一个时间片内，进程尚未完成，计时中断程序被激活，将进程送往就绪队列尾部，进行下一次轮转；<br>时间片大小确定：<strong>一个较为可取的时间片大小是略大于一次典型的交互所需要的时间，使大多数交互式进程能在一个时间片内完成。</strong></li>
 <li>优先级调度算法<br>非抢占式优先级调度算法：等一个进程执行完，分配处理机给最高优先级的进程<br>抢占式优先级调度算法：只要出现另一个优先级更高的进程，调度程序就将处理机分配给新到的的优先级最高的进程<br>优先级类型：静态优先级（在进程创建时确定）；动态优先级（随进程的推进优先级改变）；</li>
 <li>多队列调度算法</li>
 <li>多级反馈队列调度算法(优先级越高，时间片越短)<br><img src="https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=f6230aca750e0cf3a0a246fd3a76de27/eac4b74543a98226a98d8cff8d82b9014b90eb9e.jpg" alt="多级反馈队列调度算法"></li>
 <li>基于公平原则的调度算法</li>
 </ol>
-<a id="more"></a>
 </li>
 </ul>
 <hr>
@@ -620,9 +620,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/12/26/DataBase/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          DataBase
+        
+      </div>
+    </a>
   
-    <a href="/2018/12/13/Android 基础/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android 基础</div>
+  
+    <a href="/2018/12/12/数据结构和算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据结构和算法</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -665,7 +674,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Me~滔
+    		&copy; 2019 Me~滔
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
