@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com/child">
   <title>Android 基础 | 爱玩青年</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Volley 的实现原理？ Volley 是一个网络请求框架，拥有自己的一套缓存机制。 使用 Volley 首先会初始化一个 RequestQueue（请求队列），这个请求队列包含有网络请求队列和网络请求线程池（默认 4 个线程），返回缓存队列和缓存线程，最重要的包含一个通过主线程 Looper 创建的 Handler。 通过添加一个 Request 进入 RequestQueue 来进行网络请求">
+  <meta name="description" content="Android 消息机制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 基础">
-<meta property="og:url" content="http://yoursite.com/child/2019/01/01/Android 基础/index.html">
+<meta property="og:url" content="http://yoursite.com/child/2019/01/03/Android 基础/index.html">
 <meta property="og:site_name" content="爱玩青年">
-<meta property="og:description" content="Volley 的实现原理？ Volley 是一个网络请求框架，拥有自己的一套缓存机制。 使用 Volley 首先会初始化一个 RequestQueue（请求队列），这个请求队列包含有网络请求队列和网络请求线程池（默认 4 个线程），返回缓存队列和缓存线程，最重要的包含一个通过主线程 Looper 创建的 Handler。 通过添加一个 Request 进入 RequestQueue 来进行网络请求">
+<meta property="og:description" content="Android 消息机制">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://github.com/0HongTao0/Blog/blob/master/pic/AIDL%20Binder.jpg?raw=true">
-<meta property="og:updated_time" content="2019-01-02T11:09:05.574Z">
+<meta property="og:updated_time" content="2019-01-03T02:29:18.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 基础">
-<meta name="twitter:description" content="Volley 的实现原理？ Volley 是一个网络请求框架，拥有自己的一套缓存机制。 使用 Volley 首先会初始化一个 RequestQueue（请求队列），这个请求队列包含有网络请求队列和网络请求线程池（默认 4 个线程），返回缓存队列和缓存线程，最重要的包含一个通过主线程 Looper 创建的 Handler。 通过添加一个 Request 进入 RequestQueue 来进行网络请求">
+<meta name="twitter:description" content="Android 消息机制">
 <meta name="twitter:image" content="https://github.com/0HongTao0/Blog/blob/master/pic/AIDL%20Binder.jpg?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="爱玩青年" type="application/atom+xml">
@@ -158,15 +158,17 @@
   
 
         
-        <a href="/2019/01/01/Android 基础/" class="archive-article-date">
-  	<time datetime="2019-01-01T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-01</time>
+        <a href="/2019/01/03/Android 基础/" class="archive-article-date">
+  	<time datetime="2019-01-03T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Volley-的实现原理？"><a href="#Volley-的实现原理？" class="headerlink" title="Volley 的实现原理？"></a>Volley 的实现原理？</h3><ul>
+        <h3 id="Android-消息机制"><a href="#Android-消息机制" class="headerlink" title="Android 消息机制"></a>Android 消息机制</h3><a id="more"></a>
+<hr>
+<h3 id="Volley-的实现原理？"><a href="#Volley-的实现原理？" class="headerlink" title="Volley 的实现原理？"></a>Volley 的实现原理？</h3><ul>
 <li>Volley 是一个网络请求框架，拥有自己的一套缓存机制。</li>
 <li>使用 Volley 首先会初始化一个 RequestQueue（请求队列），这个请求队列包含有网络请求队列和网络请求线程池（默认 4 个线程），返回缓存队列和缓存线程，最重要的包含一个通过主线程 Looper 创建的 Handler。</li>
 <li>通过添加一个 Request 进入 RequestQueue 来进行网络请求，先添加到缓存队列中，判断缓存队列是否存在未过期的相应请求，若存在，取出返回。否则就通过网络请求线程（NetwordDispatcher）获取 request 来进行网络请求。</li>
@@ -199,7 +201,6 @@
 <li>如何在 AIDL 进行权限验证？第一种，在 onBind 中进行验证，若验证不通过则返回 null（自定义一个 permission）。第二种是在服务器端的 onTransact 中进行权限验证，（permission，或通过客户端的 Uid 和 Pid 来验证包名权限等）。</li>
 <li>AIDL 的底层实现？<br>AIDL 是 Android 接口定义语言，通过自己定义 AIDL ，SDK 会自动生成 AIDL 所对应的 Binder 类。客户端通过 Binder 的 Proxy 代理类请求，会转发至 onTransact 方法，进行获取服务端处理和参数序列化处理，然后返回结果给客户端，</li>
 </ul>
-<a id="more"></a>
 <hr>
 <h3 id="Android-内存优化"><a href="#Android-内存优化" class="headerlink" title="Android 内存优化"></a><a href="https://mp.weixin.qq.com/s/Z7oMv0IgKWNkhLon_hFakg?" target="_blank" rel="noopener">Android 内存优化</a></h3><ul>
 <li><strong>RAM优化</strong> ：降低程序在运行时使用的内存，防止由于内存不足导致程序被系统杀死。（LMK 机制：LowMemoryKill）</li>
@@ -345,7 +346,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/child/2019/01/01/Android 基础/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/child/2019/01/03/Android 基础/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -359,18 +360,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/01/02/计算机网络/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          计算机网络
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/26/DataBase/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">DataBase</div>
+    <a href="/2019/01/02/计算机网络/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机网络</div>
       <i class="icon-circle-right"></i>
     </a>
   
