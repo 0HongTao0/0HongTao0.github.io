@@ -165,7 +165,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Service-和-IntentService"><a href="#Service-和-IntentService" class="headerlink" title="Service 和 IntentService"></a>Service 和 IntentService</h3><hr>
+        <h3 id="内存泄漏的原因"><a href="#内存泄漏的原因" class="headerlink" title="内存泄漏的原因"></a>内存泄漏的原因</h3><ul>
+<li>资源没有关闭 close（IO/数据库/网络等）</li>
+<li>Bitmap 没有 recycle 释放内存</li>
+<li>Activity 的 context 被引用无法释放</li>
+<li>监听接口回调没有取消释放</li>
+<li>集合中对象没有清理造成内存泄漏</li>
+<li>ListView 没有重用 convertView 造成多次实例化 View 导致内存泄漏。</li>
+<li>单例模式造成内存泄漏。</li>
+<li>非静态 Handler 内部类造成内存泄漏。</li>
+</ul>
+<hr>
 <h3 id="Android-消息机制"><a href="#Android-消息机制" class="headerlink" title="Android 消息机制"></a>Android 消息机制</h3><ul>
 <li>四个必须知道的东西<ol>
 <li>Handler：Handler 既是消息的发送者，也是消息处理回调的接收者。</li>
