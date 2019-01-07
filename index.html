@@ -152,53 +152,55 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/03/Android 基础/">Android 基础</a>
+      <a class="article-title" href="/2019/01/07/Android 基础/">Android 基础</a>
     </h1>
   
 
         
-        <a href="/2019/01/03/Android 基础/" class="archive-article-date">
-  	<time datetime="2019-01-03T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-03</time>
+        <a href="/2019/01/07/Android 基础/" class="archive-article-date">
+  	<time datetime="2019-01-07T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="内存泄漏的原因"><a href="#内存泄漏的原因" class="headerlink" title="内存泄漏的原因"></a>内存泄漏的原因</h3><ul>
-<li>资源没有关闭 close（IO/数据库/网络等）</li>
-<li>Bitmap 没有 recycle 释放内存</li>
-<li>Activity 的 context 被引用无法释放</li>
-<li>监听接口回调没有取消释放</li>
-<li>集合中对象没有清理造成内存泄漏</li>
-<li>ListView 没有重用 convertView 造成多次实例化 View 导致内存泄漏。</li>
-<li>单例模式造成内存泄漏。</li>
-<li>非静态 Handler 内部类造成内存泄漏。</li>
+        <h3 id="Fragment-知道多少？"><a href="#Fragment-知道多少？" class="headerlink" title="Fragment 知道多少？"></a>Fragment 知道多少？</h3><ul>
+<li>Fragment 是依附 Activity 的界面，它比 Activity 多了 5 个生命周期，分别是 onAttach 当 Activity 与 Fragment 关联时候调用， onCreateView 创建 Fragment 视图调用，onActivityCreated Activity 创建时调用， onDestroyView 是销毁 Fragment 视图时候调用， onDetach 是 Activity 与 Fragment 消除关联时候调用。</li>
+<li>Fragment 返回栈：类似 Activity ，Fragment 也有栈来管理，要想把 Fragment 添加到返回栈，则需要调用 addToBackStack，这样才能在点击 Back 键根据栈的 Fragment 来显示。（被 Replace/Remove 的 Fragment 无法保存视图结构）</li>
+<li>Fragment 与 Activity 进行通信：一般情况下，Activity 都持有对 Fragment 的引用，可以直接通过调用 Fragment 的 public 方法进行通信。但是这种方法耦合度太高，可以采用接口回调方法，Fragment 定义一个回调接口，Activity 实现这个回调接口进行通信。Fragment 可以通过 getActivity 获取它依附的 Activity 实例。</li>
+<li>旋转视图的重绘数据会像 Activity 保存在 Bundle 中。</li>
 </ul>
-<hr>
-<h3 id="Android-消息机制"><a href="#Android-消息机制" class="headerlink" title="Android 消息机制"></a>Android 消息机制</h3><ul>
-<li>四个必须知道的东西<ol>
-<li>Handler：Handler 既是消息的发送者，也是消息处理回调的接收者。</li>
-<li>Message：Message 是消息机制的传递介质，是一个链表结点的结构。</li>
-<li>MessageQueue：MessageQueue 维护的是一个 Message 的链表。</li>
-<li>Looper：Looper 用于为线程循环消息队列。</li>
+<h3 id="ContentProvider-知道多少？"><a href="#ContentProvider-知道多少？" class="headerlink" title="ContentProvider 知道多少？"></a>ContentProvider 知道多少？</h3><ul>
+<li>ContentProvider 是基于 Binder 原理的应用内容提供器，可用于进程间进行数据传递。</li>
+<li>提供统一的存储和获取数据的接口给其他进程调用。</li>
+<li>安全是因为 CRUD 都要匹配到相应的 URI 才能进行。</li>
+<li><a href="https://www.jianshu.com/p/c70ae80cf64d" target="_blank" rel="noopener">Content Provider 的一些理解</a><ol>
+<li>主要用于不同程序之间实现数据共享的功能，还可以通过 Content Provider 来实现跨进程之间的通信。在 Android 系统自带有很多 Content Provider（通信录，短信等）。</li>
+<li>在 Content Provider 的 回调方法中， onCreate() 方法是运行在主线程（UI线程）中，在 AMS 通过 ActivityThread 创建并回调 onCreate() 方法，不能再 onCreat() 方法中耗时操作。其他方法 query(), insert(), update(), delete() 等方法都是运行在应用 <strong>程序的 Binder 维护的线程池</strong> 中，所以在其他方法耗时操作不会阻塞主线程。</li>
 </ol>
 </li>
-<li>消息机制的执行过程<ol>
-<li>线程要循环消息，首先要调用 Looper.prepare() 为当前线程初始化一个 Looper 和 一个 MessageQueue，还要调用 Looper.loop() 开始循环 MessagQueue 中的消息。</li>
-<li>Handler 要与线程 Looper 进行绑定，通过 Handler 发送 Message 就是 Message 和 Handler 绑定和将 Message 添加到 MessageQueue 的过程。</li>
-<li>线程不断地在 loop() 方法中取出 MessageQueue 中的消息，并且将消息发送给 Message 绑定的 Handler。</li>
-</ol>
-</li>
-<li>消息机制的注意点：<ol>
-<li>Handler 处理消息的线程就是它绑定 Looper 所对应的线程。（Handler 绑定的 Looper 在哪个线程，Handler 处理消息就在哪个线程）</li>
-<li>一个线程只有一个 Looper 和 一个 MessageQueue。（Only One）</li>
-<li>一个 Looper 被多个 Handler绑定。（消息的发送者和处理者可以有多个）</li>
-</ol>
-</li>
+</ul>
+<h3 id="Broadcast-知道多少？"><a href="#Broadcast-知道多少？" class="headerlink" title="Broadcast 知道多少？"></a>Broadcast 知道多少？</h3><ul>
+<li>Broadcast 是广播，可以用于组件间通信，监听系统状态变化广播以及多线程通信和进程通信。</li>
+<li>Broadcast 基于观察者模式以及 Binder 实现，广播发送者通过 Binder 发送广播到 AMS（Actvity Manager Service），AMS 进行对广播解析，寻找合适的广播接收者，并且将广播发送给已经注册该广播的广布接收者。</li>
+<li>注册方式有静态注册和动态注册，广播的 onReceive() 是在 AMS 中回调出来的，所以运行在主线程中。</li>
+<li>主要的广播类型有普通广播（自定义的），系统广播，有序广播，粘性广播以及 APP 应用内广播（LocalBroadcastManager）。</li>
+</ul>
+<h3 id="Service-知道多少？"><a href="#Service-知道多少？" class="headerlink" title="Service 知道多少？"></a>Service 知道多少？</h3><ul>
+<li>Service 是 Andoird 中的服务，与 Activity 相同是继承 Context 类，与 Activity 不同的是它没有界面。</li>
+<li>Service 可分为前台服务和后台服务，前台服务主要通过添加一个通知并调用 startForeground（）。而后台服务又可分为不可交互服务、可交互服务、混合型服务。不可交互服务即单纯地调用 startService() 来启动服务，可交互服务则需要调用 bindService() 来获取 Binder 进行服务与客户端的交互通信（可交互的生命周期与绑定服务的 Context 相同），混合型服务则是先调用 startService() 再 调用 bindService()。</li>
+<li>无论如何 onCreate() 只被调用一次。</li>
+<li>Service 是运行在主线程（UI 线程）中，不可耗时操作（可开线程或用 IntentService）。</li>
+<li>需要在 onDestroy() 进行回收处理。</li>
+</ul>
+<h3 id="Activity-知道多少？"><a href="#Activity-知道多少？" class="headerlink" title="Activity 知道多少？"></a>Activity 知道多少？</h3><ul>
+<li>七大生命周期，onCreate 初始化调用, onStart 可见不可交互, onResume 可见可交互, onPause 可见不可交互（如打开一个不全屏的 Dialog ）, onStop 不可见, onDestroy 死亡 和 onRestart 重开。</li>
+<li>启动模式 标准模式(Standard) 每次都新建一个 Activity，栈顶复用(SingleTop) 栈顶有就 onNewIntent, 栈内复用(SingTask) 栈内有就 onNewIntent 并且 clearTop，单例模式(SingleInstance) 存放在新建一个 Activity 栈。</li>
+<li>注意屏幕翻转的生命周期：onPause, onSaveInstanceState, onStop, onDestroy, onCreat, onStart, onRestoreInstanceState, onResume。（保存的数据在 Bundle 中，在 onCreate 中要判 null，而在 onRestoreInstanceState(不需要判 null）</li>
 </ul>
         
-          <a class="article-more-a" href="/2019/01/03/Android 基础/#more">more >></a>
+          <a class="article-more-a" href="/2019/01/07/Android 基础/#more">more >></a>
         
       
 
@@ -211,7 +213,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/03/Android 基础/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/01/07/Android 基础/">展开全文 >></a>
         </p>
       
 
@@ -636,85 +638,6 @@
 
 
   
-    <article id="post-JAVA 基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/30/JAVA 基础/">JAVA 基础</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/30/JAVA 基础/" class="archive-article-date">
-  	<time datetime="2018-11-30T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="和-equals-和-hashcode-的区别"><a href="#和-equals-和-hashcode-的区别" class="headerlink" title="== 和 equals() 和 hashcode() 的区别"></a>== 和 equals() 和 hashcode() 的区别</h3><p>  == 是单纯地对比两个对象的地址值是否相等。 equals() 和 hashcode() 是 Object 的方法。</p>
-<ul>
-<li><p>equals() 方法<br>equals() 在 Object 类中的实现只是单纯地判断两个 <strong>引用指的对象地址</strong> 是否相等，但是在 String ，Integer 等包装类该方法是地对 <strong>值</strong> 判断是否相等。equals() 方法符合自反性，对称性，传递性和一致性的性质。Object 类下的 equals() 方法实现如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>hashcode() 方法<br>hashcode() 方法返回的是对象的 hash code 的值，主要被用于 hash 类的集合。（HashTable, HashMap）Object 类下的 hashcode() 方法实现如下：返回的是对象的地址值。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//说明是一个本地方法，实现是根据本地机器相关（native 层实现）</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>equals() 方法和 hashcode() 方法之间的关系(一种约定俗成的关系)</p>
-<ol>
-<li>两个对象的 equals() 判断返回 true，则它们的 hashcode() 方法返回的值相等</li>
-<li>两个对象的 hashcode() 方法返回的值相等，但是它们 equals() 判断并不一定相等。</li>
-</ol>
-</li>
-<li><p><strong>如果 equals() 判断两个对象返回 true，而它们的 hashcode() 返回的值不等，会导致 HashMap 集合中存在相同的 Key 值，违反了 HashMap 中 Key 值不能重复性质。所以在使用 HashMap, HashSet 等集合中，需要符合实际情况判断时，需要重写 Key 对象的 equals() 和 hashcode() 方法。</strong></p>
-        
-          <a class="article-more-a" href="/2018/11/30/JAVA 基础/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/30/JAVA 基础/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -958,6 +881,80 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/26/Android Retrofit/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Android 构建知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/21/Android 构建知识/">Android 构建知识</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/21/Android 构建知识/" class="archive-article-date">
+  	<time datetime="2018-07-21T01:16:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="简单介绍一下-Gradle-Build-Tool"><a href="#简单介绍一下-Gradle-Build-Tool" class="headerlink" title="简单介绍一下 Gradle Build Tool"></a>简单介绍一下 <a href="https://gradle.org/" target="_blank" rel="noopener">Gradle Build Tool</a></h5><ul>
+<li><p>可以帮助团队更快地构建，自动化和交付更好的软件。</p>
+</li>
+<li><p>使用一种基于 Groovy 语言来<strong>声明项目设置</strong>。</p>
+</li>
+<li><p>支持多语言构建：Java,  C++, Python, Android , IOS 等等。</p>
+</li>
+<li><p>Gradle 的优势：自动处理 dependencies 关系（Maven 概念），自动处理部署问题（Ant 概念），可以使用条件判断写法（Groovy语言）</p>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2018/07/21/Android 构建知识/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/21/Android 构建知识/">展开全文 >></a>
         </p>
       
 
