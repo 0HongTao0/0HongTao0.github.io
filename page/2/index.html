@@ -145,6 +145,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Android 构建知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/21/Android 构建知识/">Android 构建知识</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/21/Android 构建知识/" class="archive-article-date">
+  	<time datetime="2018-07-21T01:16:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="简单介绍一下-Gradle-Build-Tool"><a href="#简单介绍一下-Gradle-Build-Tool" class="headerlink" title="简单介绍一下 Gradle Build Tool"></a>简单介绍一下 <a href="https://gradle.org/" target="_blank" rel="noopener">Gradle Build Tool</a></h5><ul>
+<li><p>可以帮助团队更快地构建，自动化和交付更好的软件。</p>
+</li>
+<li><p>使用一种基于 Groovy 语言来<strong>声明项目设置</strong>。</p>
+</li>
+<li><p>支持多语言构建：Java,  C++, Python, Android , IOS 等等。</p>
+</li>
+<li><p>Gradle 的优势：自动处理 dependencies 关系（Maven 概念），自动处理部署问题（Ant 概念），可以使用条件判断写法（Groovy语言）</p>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2018/07/21/Android 构建知识/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/21/Android 构建知识/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Android Volley" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -416,84 +490,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/06/Android 屏幕适配/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JAVA 基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/07/JAVA 基础/">JAVA 基础</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/07/JAVA 基础/" class="archive-article-date">
-  	<time datetime="2018-01-07T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="JAVA-集合中序列化的事"><a href="#JAVA-集合中序列化的事" class="headerlink" title="JAVA 集合中序列化的事"></a>JAVA 集合中序列化的事</h3><ul>
-<li>Java 集合中与集合内容有关的东西几乎都被 transient（不被序列化，短暂的）修饰，但是 Java 集合又是可以序列化的。</li>
-<li>Java 集合通常是存不满的，它的 size 通常小于 capacity，不需要将集合全部序列化，而是通过自定义 readObject() 和 writeObject() 来将需要的内容进行序列化。</li>
-</ul>
-<h3 id="ArrayList-知道多少-？"><a href="#ArrayList-知道多少-？" class="headerlink" title="ArrayList 知道多少 ？"></a>ArrayList 知道多少 ？</h3><ul>
-<li>ArrayList 底层是基于数组来实现的，容量初始化的大小为 10。</li>
-<li>由于数组是固定的长度，所以 ArrayList 拥有一套自扩容机制，就是当向 ArrayList 添加元素时，需要判断数组的大小是否够大，若不够大就需要扩容，先是数组大小增长为原来大小的 1.5 倍，假如还是不够大就直接增长为需要的数组最大长度。</li>
-<li>ArrayList 的扩容涉及到数组的复制，消耗很多资源，所以建议是新建 ArrayList 的时候先判断要多大的容量，避免多次扩容带来的性能消耗。</li>
-<li>直接获取快，修改效率低。</li>
-</ul>
-<h3 id="LinkedList-知道多少？"><a href="#LinkedList-知道多少？" class="headerlink" title="LinkedList 知道多少？"></a>LinkedList 知道多少？</h3><ul>
-<li>LinkedList 所维护的是一个双向链表，链表结点是通过泛型封装的 Node。</li>
-<li>LinkedList 的 set get 方法的时间复杂度都是 O(n / 2),即根据查询的下标与当前 LinkedList 的 size 对比查看是在前半部分还是后半部分，再进行选择开始结点。</li>
-<li><p>获取慢（需要遍历链表），修改效率高。</p>
-        
-          <a class="article-more-a" href="/2018/01/07/JAVA 基础/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/07/JAVA 基础/">展开全文 >></a>
         </p>
       
 

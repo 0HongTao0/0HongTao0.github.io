@@ -145,6 +145,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JAVA 基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/07/JAVA 基础/">JAVA 基础</a>
+    </h1>
+  
+
+        
+        <a href="/2019/01/07/JAVA 基础/" class="archive-article-date">
+  	<time datetime="2019-01-07T06:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="JAVA-集合中序列化的事"><a href="#JAVA-集合中序列化的事" class="headerlink" title="JAVA 集合中序列化的事"></a>JAVA 集合中序列化的事</h3><ul>
+<li>Java 集合中与集合内容有关的东西几乎都被 transient（不被序列化，短暂的）修饰，但是 Java 集合又是可以序列化的。</li>
+<li>Java 集合通常是存不满的，它的 size 通常小于 capacity，不需要将集合全部序列化，而是通过自定义 readObject() 和 writeObject() 来将需要的内容进行序列化。</li>
+</ul>
+<h3 id="ArrayList-知道多少-？"><a href="#ArrayList-知道多少-？" class="headerlink" title="ArrayList 知道多少 ？"></a>ArrayList 知道多少 ？</h3><ul>
+<li>ArrayList 底层是基于数组来实现的，容量初始化的大小为 10。</li>
+<li>由于数组是固定的长度，所以 ArrayList 拥有一套自扩容机制，就是当向 ArrayList 添加元素时，需要判断数组的大小是否够大，若不够大就需要扩容，先是数组大小增长为原来大小的 1.5 倍，假如还是不够大就直接增长为需要的数组最大长度。</li>
+<li>ArrayList 的扩容涉及到数组的复制，消耗很多资源，所以建议是新建 ArrayList 的时候先判断要多大的容量，避免多次扩容带来的性能消耗。</li>
+<li>直接获取快，修改效率低。</li>
+</ul>
+<h3 id="LinkedList-知道多少？"><a href="#LinkedList-知道多少？" class="headerlink" title="LinkedList 知道多少？"></a>LinkedList 知道多少？</h3><ul>
+<li>LinkedList 所维护的是一个双向链表，链表结点是通过泛型封装的 Node。</li>
+<li>LinkedList 的 set get 方法的时间复杂度都是 O(n / 2),即根据查询的下标与当前 LinkedList 的 size 对比查看是在前半部分还是后半部分，再进行选择开始结点。</li>
+<li><p>获取慢（需要遍历链表），修改效率高。</p>
+        
+          <a class="article-more-a" href="/2019/01/07/JAVA 基础/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/01/07/JAVA 基础/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Android 基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -165,40 +243,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Fragment-知道多少？"><a href="#Fragment-知道多少？" class="headerlink" title="Fragment 知道多少？"></a>Fragment 知道多少？</h3><ul>
-<li>Fragment 是依附 Activity 的界面，它比 Activity 多了 5 个生命周期，分别是 onAttach 当 Activity 与 Fragment 关联时候调用， onCreateView 创建 Fragment 视图调用，onActivityCreated Activity 创建时调用， onDestroyView 是销毁 Fragment 视图时候调用， onDetach 是 Activity 与 Fragment 消除关联时候调用。</li>
-<li>Fragment 返回栈：类似 Activity ，Fragment 也有栈来管理，要想把 Fragment 添加到返回栈，则需要调用 addToBackStack，这样才能在点击 Back 键根据栈的 Fragment 来显示。（被 Replace/Remove 的 Fragment 无法保存视图结构）</li>
-<li>Fragment 与 Activity 进行通信：一般情况下，Activity 都持有对 Fragment 的引用，可以直接通过调用 Fragment 的 public 方法进行通信。但是这种方法耦合度太高，可以采用接口回调方法，Fragment 定义一个回调接口，Activity 实现这个回调接口进行通信。Fragment 可以通过 getActivity 获取它依附的 Activity 实例。</li>
-<li>旋转视图的重绘数据会像 Activity 保存在 Bundle 中。</li>
-</ul>
-<h3 id="ContentProvider-知道多少？"><a href="#ContentProvider-知道多少？" class="headerlink" title="ContentProvider 知道多少？"></a>ContentProvider 知道多少？</h3><ul>
-<li>ContentProvider 是基于 Binder 原理的应用内容提供器，可用于进程间进行数据传递。</li>
-<li>提供统一的存储和获取数据的接口给其他进程调用。</li>
-<li>安全是因为 CRUD 都要匹配到相应的 URI 才能进行。</li>
-<li><a href="https://www.jianshu.com/p/c70ae80cf64d" target="_blank" rel="noopener">Content Provider 的一些理解</a><ol>
-<li>主要用于不同程序之间实现数据共享的功能，还可以通过 Content Provider 来实现跨进程之间的通信。在 Android 系统自带有很多 Content Provider（通信录，短信等）。</li>
-<li>在 Content Provider 的 回调方法中， onCreate() 方法是运行在主线程（UI线程）中，在 AMS 通过 ActivityThread 创建并回调 onCreate() 方法，不能再 onCreat() 方法中耗时操作。其他方法 query(), insert(), update(), delete() 等方法都是运行在应用 <strong>程序的 Binder 维护的线程池</strong> 中，所以在其他方法耗时操作不会阻塞主线程。</li>
+        <h3 id="AsyncTask-知道多少？"><a href="#AsyncTask-知道多少？" class="headerlink" title="AsyncTask 知道多少？"></a>AsyncTask 知道多少？</h3><ul>
+<li>AsyncTask 是轻量级的异步框架。我们要使用它，首先要实现一个类来继承 AsyncTask，并实现它的回调方法（onPerExecute，doInBackground(Params…)，onProgressUpdate(Progress…)，onPostExecute(Result )）。</li>
+<li>AsyncTask 底部实现是通过构建带返回结果的任务（Callable、FutureTask）来执行 doInBackground(Params..) 方法，通过一个带锁的串行的执行器 SerialExecutor 保证任务的串行执行，利用 ThreadPoolExecutor 线程池来运行任务并且取得运行结果 Result，最后通过绑定了主线程的 Handler 来发送消息给主线程进行执行 onPostExecute(Result…) 方法。</li>
+<li><p>要注意的点：</p>
+<ol>
+<li>AsyncTask 必须在主线程中初始化，这样才可以 Looper 来实例化AsyncTask 的 hadler。（源码解释中有说到）</li>
+<li>execute(Params…) 方法必须在主线程中调用。（源码解释中有说到）</li>
+</ol>
+<p><strong>Android 开发艺术探索里面提到：为了能够将执行环境切换到主线程，这就要求 sHandler 这个对象必须在主线程中创建。由于静态成员会在加载类的时候进行初始化，因此这就变相要求 AsyncTask 的类必须在主线程中加载，否则同一个进程中的 AsyncTask 都无法正常工作。【抄自：Android 开发艺术探索】</strong><br><strong>其实不需要在主线程中创建，因为 AsyncTask 通过 getMainLooper() 就能获取到主线程对应的 Looper，通过主线程的 Looper 创建的 Handler 就是在主线程中运行。</strong></p>
+</li>
+<li>AsyncTask 可能会出现的问题：<ol>
+<li>内存泄漏：一般来说，AsyncTask 的实现是 Activity 的非静态内部类，非静态内部类对象会持有外部类对象的引用，所以导致在 Activity 需要 finish 的时候无法释放。</li>
+<li>结果丢失：屏幕旋转会导致 Activity 重建，导致之前的 AsyncTask（非静态内部类） 持有的 Activity 引用失效，更新界面失效。</li>
+<li>生命周期：AsyncTask 不与任何组件的生命周期绑定，最好在 onDestroy()  中调用 cancel(boolean) 取消任务。</li>
 </ol>
 </li>
 </ul>
-<h3 id="Broadcast-知道多少？"><a href="#Broadcast-知道多少？" class="headerlink" title="Broadcast 知道多少？"></a>Broadcast 知道多少？</h3><ul>
-<li>Broadcast 是广播，可以用于组件间通信，监听系统状态变化广播以及多线程通信和进程通信。</li>
-<li>Broadcast 基于观察者模式以及 Binder 实现，广播发送者通过 Binder 发送广播到 AMS（Actvity Manager Service），AMS 进行对广播解析，寻找合适的广播接收者，并且将广播发送给已经注册该广播的广布接收者。</li>
-<li>注册方式有静态注册和动态注册，广播的 onReceive() 是在 AMS 中回调出来的，所以运行在主线程中。</li>
-<li>主要的广播类型有普通广播（自定义的），系统广播，有序广播，粘性广播以及 APP 应用内广播（LocalBroadcastManager）。</li>
-</ul>
-<h3 id="Service-知道多少？"><a href="#Service-知道多少？" class="headerlink" title="Service 知道多少？"></a>Service 知道多少？</h3><ul>
-<li>Service 是 Andoird 中的服务，与 Activity 相同是继承 Context 类，与 Activity 不同的是它没有界面。</li>
-<li>Service 可分为前台服务和后台服务，前台服务主要通过添加一个通知并调用 startForeground（）。而后台服务又可分为不可交互服务、可交互服务、混合型服务。不可交互服务即单纯地调用 startService() 来启动服务，可交互服务则需要调用 bindService() 来获取 Binder 进行服务与客户端的交互通信（可交互的生命周期与绑定服务的 Context 相同），混合型服务则是先调用 startService() 再 调用 bindService()。</li>
-<li>无论如何 onCreate() 只被调用一次。</li>
-<li>Service 是运行在主线程（UI 线程）中，不可耗时操作（可开线程或用 IntentService）。</li>
-<li>需要在 onDestroy() 进行回收处理。</li>
-</ul>
-<h3 id="Activity-知道多少？"><a href="#Activity-知道多少？" class="headerlink" title="Activity 知道多少？"></a>Activity 知道多少？</h3><ul>
-<li>七大生命周期，onCreate 初始化调用, onStart 可见不可交互, onResume 可见可交互, onPause 可见不可交互（如打开一个不全屏的 Dialog ）, onStop 不可见, onDestroy 死亡 和 onRestart 重开。</li>
-<li>启动模式 标准模式(Standard) 每次都新建一个 Activity，栈顶复用(SingleTop) 栈顶有就 onNewIntent, 栈内复用(SingTask) 栈内有就 onNewIntent 并且 clearTop，单例模式(SingleInstance) 存放在新建一个 Activity 栈。</li>
-<li>注意屏幕翻转的生命周期：onPause, onSaveInstanceState, onStop, onDestroy, onCreat, onStart, onRestoreInstanceState, onResume。（保存的数据在 Bundle 中，在 onCreate 中要判 null，而在 onRestoreInstanceState(不需要判 null）</li>
-</ul>
+<h3 id="Android-事件分发机制知道多少？"><a href="#Android-事件分发机制知道多少？" class="headerlink" title="Android 事件分发机制知道多少？"></a><a href="https://lrh1993.gitbooks.io/android_interview_guide/content/android/basis/Event-Dispatch.html" target="_blank" rel="noopener">Android 事件分发机制知道多少？</a></h3><ul>
+<li>一次没有重写点击事件涉及的方法的默认事件传递过程：<ol>
+<li>首先用户点击 Android 手机屏幕会产生一次系统中断，生成点击事件并分发到 Activity 中</li>
+<li>Activity 收到点击事件，会将点击事件分发到它的 PhoneWindow 中的 DecorView 中。</li>
+<li>DeorView 是一个 ViewGroup，ViewGroup 收到点击事件会遍历它所包含的所有子 View ，是否存在子 view 可以处理该次点击事件，若所有子 View 都要没有出现在该次点击事件的坐标，则 ViewGroup 处理该次点击事件。否则交给出现在点击事件坐标的 View 处理。</li>
+</ol>
+</li>
+<li>事件分发机制所需要了解的几个函数：<ol>
+<li>dispatchTouchEvent()：分发事件函数，点击事件能够传递到当前 View 时该方法被调用</li>
+<li>onInterceptTouchEvent():拦截事件函数，只有 ViewGroup 才存在这个函数，用于判断是否拦截事件，在 dispatchTouchEvent() 调用。</li>
+<li>onTouchEvent():处理事件函数，主要用于处理点击事件。在 dispatchTouchEvent() 调用。</li>
+</ol>
+</li>
+<li><p>最重要的是事件分发机制的函数返回值的含义：<br>总共有 3 种返回类型（现实比文字复杂的多，根据图来记忆）：</p>
+<ol>
+<li>true：就可以消费事件，拦截事件等，事件不继续向下传递。</li>
+<li>false：不消费事件，事件交给父控件处理，事件不继续向下传递。</li>
+<li>super：调用父类的方法<br><img src="http://upload-images.jianshu.io/upload_images/944365-aa8416fc6d2e5ecd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="事件分发业务流程说明图"></li>
+</ol>
         
           <a class="article-more-a" href="/2019/01/07/Android 基础/#more">more >></a>
         
@@ -881,80 +961,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/26/Android Retrofit/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Android 构建知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/21/Android 构建知识/">Android 构建知识</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/21/Android 构建知识/" class="archive-article-date">
-  	<time datetime="2018-07-21T01:16:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="简单介绍一下-Gradle-Build-Tool"><a href="#简单介绍一下-Gradle-Build-Tool" class="headerlink" title="简单介绍一下 Gradle Build Tool"></a>简单介绍一下 <a href="https://gradle.org/" target="_blank" rel="noopener">Gradle Build Tool</a></h5><ul>
-<li><p>可以帮助团队更快地构建，自动化和交付更好的软件。</p>
-</li>
-<li><p>使用一种基于 Groovy 语言来<strong>声明项目设置</strong>。</p>
-</li>
-<li><p>支持多语言构建：Java,  C++, Python, Android , IOS 等等。</p>
-</li>
-<li><p>Gradle 的优势：自动处理 dependencies 关系（Maven 概念），自动处理部署问题（Ant 概念），可以使用条件判断写法（Groovy语言）</p>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2018/07/21/Android 构建知识/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/21/Android 构建知识/">展开全文 >></a>
         </p>
       
 
