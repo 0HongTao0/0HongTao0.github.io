@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com/child">
   <title>JAVA 基础 | 爱玩青年</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JAVA 集合中序列化的事 Java 集合中与集合内容有关的东西几乎都被 transient（不被序列化，短暂的）修饰，但是 Java 集合又是可以序列化的。 Java 集合通常是存不满的，它的 size 通常小于 capacity，不需要将集合全部序列化，而是通过自定义 readObject() 和 writeObject() 来将需要的内容进行序列化。  ArrayList 知道多少 ？ Ar">
+  <meta name="description" content="TreeMap 知道多少？ TreeMap 维护的是一个红黑树，保证了插入 Key 值的大小顺序。  LinkedHashMap 知道多少？ LinkedHashMap 继承了 HashMap，所以 LinkedHashMap 拥有 HashMap 的特性。 LinkedHashMap 在 HashMap 的基础上自己实现了一个双向链表，用于保证迭代顺序是插入的顺序。 LinkedHashMap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JAVA 基础">
 <meta property="og:url" content="http://yoursite.com/child/2019/01/07/JAVA 基础/index.html">
 <meta property="og:site_name" content="爱玩青年">
-<meta property="og:description" content="JAVA 集合中序列化的事 Java 集合中与集合内容有关的东西几乎都被 transient（不被序列化，短暂的）修饰，但是 Java 集合又是可以序列化的。 Java 集合通常是存不满的，它的 size 通常小于 capacity，不需要将集合全部序列化，而是通过自定义 readObject() 和 writeObject() 来将需要的内容进行序列化。  ArrayList 知道多少 ？ Ar">
+<meta property="og:description" content="TreeMap 知道多少？ TreeMap 维护的是一个红黑树，保证了插入 Key 值的大小顺序。  LinkedHashMap 知道多少？ LinkedHashMap 继承了 HashMap，所以 LinkedHashMap 拥有 HashMap 的特性。 LinkedHashMap 在 HashMap 的基础上自己实现了一个双向链表，用于保证迭代顺序是插入的顺序。 LinkedHashMap">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://github.com/0HongTao0/Blog/blob/master/pic/HashMap_%E4%B8%8D%E5%90%8CJDK%E6%89%A9%E5%AE%B9%E6%AF%94%E8%BE%83.png?raw=true">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5545289-1c4500c4a5adaafe.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/527/format/webp">
-<meta property="og:updated_time" content="2019-01-07T12:00:03.387Z">
+<meta property="og:updated_time" content="2019-01-09T11:49:46.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA 基础">
-<meta name="twitter:description" content="JAVA 集合中序列化的事 Java 集合中与集合内容有关的东西几乎都被 transient（不被序列化，短暂的）修饰，但是 Java 集合又是可以序列化的。 Java 集合通常是存不满的，它的 size 通常小于 capacity，不需要将集合全部序列化，而是通过自定义 readObject() 和 writeObject() 来将需要的内容进行序列化。  ArrayList 知道多少 ？ Ar">
+<meta name="twitter:description" content="TreeMap 知道多少？ TreeMap 维护的是一个红黑树，保证了插入 Key 值的大小顺序。  LinkedHashMap 知道多少？ LinkedHashMap 继承了 HashMap，所以 LinkedHashMap 拥有 HashMap 的特性。 LinkedHashMap 在 HashMap 的基础上自己实现了一个双向链表，用于保证迭代顺序是插入的顺序。 LinkedHashMap">
 <meta name="twitter:image" content="https://github.com/0HongTao0/Blog/blob/master/pic/HashMap_%E4%B8%8D%E5%90%8CJDK%E6%89%A9%E5%AE%B9%E6%AF%94%E8%BE%83.png?raw=true">
   
     <link rel="alternative" href="/atom.xml" title="爱玩青年" type="application/atom+xml">
@@ -167,7 +167,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="JAVA-集合中序列化的事"><a href="#JAVA-集合中序列化的事" class="headerlink" title="JAVA 集合中序列化的事"></a>JAVA 集合中序列化的事</h3><ul>
+        <h3 id="TreeMap-知道多少？"><a href="#TreeMap-知道多少？" class="headerlink" title="TreeMap 知道多少？"></a>TreeMap 知道多少？</h3><ul>
+<li>TreeMap 维护的是一个红黑树，保证了插入 Key 值的大小顺序。</li>
+</ul>
+<h3 id="LinkedHashMap-知道多少？"><a href="#LinkedHashMap-知道多少？" class="headerlink" title="LinkedHashMap 知道多少？"></a>LinkedHashMap 知道多少？</h3><ul>
+<li>LinkedHashMap 继承了 HashMap，所以 LinkedHashMap 拥有 HashMap 的特性。</li>
+<li>LinkedHashMap 在 HashMap 的基础上自己实现了一个双向链表，用于保证迭代顺序是插入的顺序。</li>
+<li>LinkedHashMap 重写了 HashMap 的三个方法来维护双向链表，保证链表的顺序是对象插入的顺序。分别是 void afterNodeAccess(Node&lt;K, V&gt; p) 结点访问后, void afterNodeInsertion(boolean evict) 结点插入后, void afterNodeRemoval(Node&lt;K, V&gt; P) 结点移除后。</li>
+</ul>
+<h3 id="HashMap-知道多少？"><a href="#HashMap-知道多少？" class="headerlink" title="HashMap 知道多少？"></a>HashMap 知道多少？</h3><ul>
+<li>HashMap 维护的是一个桶数组，桶数组的元素是一个链表，将对象放进 HashMap 里面要计算 index 位置。假如产生 hash 冲突，则进行采用链地址发进行解决 hash 冲突。</li>
+<li>JDK 7 和 JDK 8 有区别，在 JDK 7 的时候不管桶的链表有多长，依旧采用的是链表形式的存储方式。但是这种存储方式在数据量比较大的时候通过 HashMap 的 get 方法进行获取里面的值效率较低（时间复杂度为 O(n)）。所以在 JDK 8 的时候加入了红黑树进行存储。当桶中的链表长度大于等于 8 时并且 HashMap 的 size 大于 64 的时候，会进行将链表树化成红黑树，红黑树的查询效率较高（时间复杂度为 O(logn)）。当链表长度小于 6 时，会进行将红黑树变成链表的处理。</li>
+<li>HashMap 的扩容是以 2 的 n 次方进行扩容，默认 HashMap 的大小为 16（1 的 4 次方）。但是 HashMap 的扩容根据负载程度来进行扩容的，存在一个负载因子 loadFactor（默认的大小为 0.75），当 HashMap 的 size 超过 容量 * 负载因子的值的时候，数组桶就会扩大 2 倍，相应的容量耶扩大 2 倍。</li>
+<li>扩容后需要对原有的数据进行位置修改，由于桶的大小是以 2 倍增长，所以只需要在原有 Key 的 hashCode 基础上查看多一个二进制位，若是 1 ，则 新位置 = 原来 + oldCap，若是 0 ，位置不变。</li>
+<li>HashMap 是不同步的，因为多线程在使用同一个 HashMap 的时候，有可能会进行扩容操作，而扩容操作会导致复杂的引用指向操作，从而导致出现循环链表。</li>
+<li>hashCode 的计算方法：采用高位异或低位来进行获取 hashCode，保证高位参与运算，减少 table 数组比较小的时候计算开销。（Java 8）</li>
+<li>HashMap 的 index 计算方法：采用按位与运算 hashCode &amp; (length - 1)。&amp; 运算比 % 效率高，并且结果相同。</li>
+<li><p>HashMap 输出迭代不是加入的顺序。<br><a href="http://www.importnew.com/14417.html" target="_blank" rel="noopener">HashMap_性能分析</a></p>
+<a id="more"></a>
+</li>
+</ul>
+<h3 id="JAVA-集合中序列化的事"><a href="#JAVA-集合中序列化的事" class="headerlink" title="JAVA 集合中序列化的事"></a>JAVA 集合中序列化的事</h3><ul>
 <li>Java 集合中与集合内容有关的东西几乎都被 transient（不被序列化，短暂的）修饰，但是 Java 集合又是可以序列化的。</li>
 <li>Java 集合通常是存不满的，它的 size 通常小于 capacity，不需要将集合全部序列化，而是通过自定义 readObject() 和 writeObject() 来将需要的内容进行序列化。</li>
 </ul>
@@ -180,9 +200,7 @@
 <h3 id="LinkedList-知道多少？"><a href="#LinkedList-知道多少？" class="headerlink" title="LinkedList 知道多少？"></a>LinkedList 知道多少？</h3><ul>
 <li>LinkedList 所维护的是一个双向链表，链表结点是通过泛型封装的 Node。</li>
 <li>LinkedList 的 set get 方法的时间复杂度都是 O(n / 2),即根据查询的下标与当前 LinkedList 的 size 对比查看是在前半部分还是后半部分，再进行选择开始结点。</li>
-<li><p>获取慢（需要遍历链表），修改效率高。</p>
-<a id="more"></a>
-</li>
+<li>获取慢（需要遍历链表），修改效率高。</li>
 </ul>
 <hr>
 <h3 id="和-equals-和-hashcode-的区别"><a href="#和-equals-和-hashcode-的区别" class="headerlink" title="== 和 equals() 和 hashcode() 的区别"></a>== 和 equals() 和 hashcode() 的区别</h3><p>  == 是单纯地对比两个对象的地址值是否相等。 equals() 和 hashcode() 是 Object 的方法。</p>

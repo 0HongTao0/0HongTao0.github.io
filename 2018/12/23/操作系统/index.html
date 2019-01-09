@@ -8,13 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com/child">
   <title>操作系统 | 爱玩青年</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="附件：重要部分的习题理解，看了就会那种。磁盘存储器的管理 磁盘文件的链接组织方式 连续组织：连续分配方法要求每个文件在磁盘上占有一组连续的块。这样所形成的文件结构称为顺序文件结构，此时的物理文件称为顺序文件。 隐式链接：文件目录的每个目录项中都必须含有指向链接文件的第一个盘块和最后一个盘块的指针。 显式链接：用于链接文件各物理块的指针，显式地存放在内存的一张链接表中。该表在整个磁盘仅设置一张。 单">
+  <meta name="description" content="进程 进程控制块（PCB） ：描述进程的基本情况和活动过程，对进程进行控制和管理。  进程实体 = 程序 + 数据 + 进程控制块 创建进程就是创建进程的 PCB，撤销进程就是撤销进程的 PCB。 PCB 的作用：使多道程序能够独立运行。（使进程并发执行） PCB 的信息：进程标识符，处理机状态，进程调度信息，进程控制信息。 操作系统管理 PCB 的方式：线性方式（线性表），链接方式（链表），索引">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统">
 <meta property="og:url" content="http://yoursite.com/child/2018/12/23/操作系统/index.html">
 <meta property="og:site_name" content="爱玩青年">
-<meta property="og:description" content="附件：重要部分的习题理解，看了就会那种。磁盘存储器的管理 磁盘文件的链接组织方式 连续组织：连续分配方法要求每个文件在磁盘上占有一组连续的块。这样所形成的文件结构称为顺序文件结构，此时的物理文件称为顺序文件。 隐式链接：文件目录的每个目录项中都必须含有指向链接文件的第一个盘块和最后一个盘块的指针。 显式链接：用于链接文件各物理块的指针，显式地存放在内存的一张链接表中。该表在整个磁盘仅设置一张。 单">
+<meta property="og:description" content="进程 进程控制块（PCB） ：描述进程的基本情况和活动过程，对进程进行控制和管理。  进程实体 = 程序 + 数据 + 进程控制块 创建进程就是创建进程的 PCB，撤销进程就是撤销进程的 PCB。 PCB 的作用：使多道程序能够独立运行。（使进程并发执行） PCB 的信息：进程标识符，处理机状态，进程调度信息，进程控制信息。 操作系统管理 PCB 的方式：线性方式（线性表），链接方式（链表），索引">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1048215/201802/1048215-20180225230728426-2048803863.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1048215/201802/1048215-20180225230737441-833727159.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1711514-10640ee4c2c8c273.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/784/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/656630-33723c9b511ef3d3.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5853159-daa9e2f8a9e6c3aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480/format/webp">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5853159-c466c43bbd0b1733.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480/format/webp">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5853159-82857d166a7ee990.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/348/format/webp">
@@ -49,15 +53,11 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5853159-eb277b120721a49c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/300/format/webp">
 <meta property="og:image" content="https://img-blog.csdn.net/20180427154109752?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NoZW5fWW9uZ2Jv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
 <meta property="og:image" content="https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=f6230aca750e0cf3a0a246fd3a76de27/eac4b74543a98226a98d8cff8d82b9014b90eb9e.jpg">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1711514-10640ee4c2c8c273.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/784/format/webp">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/1048215/201802/1048215-20180225230728426-2048803863.png">
-<meta property="og:image" content="https://images2018.cnblogs.com/blog/1048215/201802/1048215-20180225230737441-833727159.png">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/656630-33723c9b511ef3d3.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240">
-<meta property="og:updated_time" content="2019-01-02T07:19:56.351Z">
+<meta property="og:updated_time" content="2019-01-09T11:30:10.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统">
-<meta name="twitter:description" content="附件：重要部分的习题理解，看了就会那种。磁盘存储器的管理 磁盘文件的链接组织方式 连续组织：连续分配方法要求每个文件在磁盘上占有一组连续的块。这样所形成的文件结构称为顺序文件结构，此时的物理文件称为顺序文件。 隐式链接：文件目录的每个目录项中都必须含有指向链接文件的第一个盘块和最后一个盘块的指针。 显式链接：用于链接文件各物理块的指针，显式地存放在内存的一张链接表中。该表在整个磁盘仅设置一张。 单">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5853159-daa9e2f8a9e6c3aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480/format/webp">
+<meta name="twitter:description" content="进程 进程控制块（PCB） ：描述进程的基本情况和活动过程，对进程进行控制和管理。  进程实体 = 程序 + 数据 + 进程控制块 创建进程就是创建进程的 PCB，撤销进程就是撤销进程的 PCB。 PCB 的作用：使多道程序能够独立运行。（使进程并发执行） PCB 的信息：进程标识符，处理机状态，进程调度信息，进程控制信息。 操作系统管理 PCB 的方式：线性方式（线性表），链接方式（链表），索引">
+<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/1048215/201802/1048215-20180225230728426-2048803863.png">
   
     <link rel="alternative" href="/atom.xml" title="爱玩青年" type="application/atom+xml">
   
@@ -203,7 +203,106 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="附件：重要部分的习题理解，看了就会那种。"><a href="#附件：重要部分的习题理解，看了就会那种。" class="headerlink" title="附件：重要部分的习题理解，看了就会那种。"></a><a href="https://github.com/0HongTao0/Blog/blob/master/pic/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%B9%E5%BA%94%E4%B9%A0%E9%A2%98.pptx" target="_blank" rel="noopener">附件：重要部分的习题理解，看了就会那种。</a></h2><h3 id="磁盘存储器的管理"><a href="#磁盘存储器的管理" class="headerlink" title="磁盘存储器的管理"></a>磁盘存储器的管理</h3><ul>
+        <h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><ul>
+<li><p><strong>进程控制块（PCB）</strong> ：描述进程的基本情况和活动过程，对进程进行控制和管理。</p>
+<ol>
+<li>进程实体 = 程序 + 数据 + 进程控制块</li>
+<li>创建进程就是创建进程的 PCB，撤销进程就是撤销进程的 PCB。</li>
+<li><strong>PCB 的作用：使多道程序能够独立运行。（使进程并发执行）</strong></li>
+<li>PCB 的信息：进程标识符，处理机状态，进程调度信息，进程控制信息。</li>
+<li>操作系统管理 PCB 的方式：线性方式（线性表），链接方式（链表），索引方式（进程状态索引表）  </li>
+</ol>
+</li>
+<li><p>进程的状态转换</p>
+<ol>
+<li>状态转换图（创建,就绪，执行，阻塞，，终止）<br><img src="https://images2018.cnblogs.com/blog/1048215/201802/1048215-20180225230728426-2048803863.png" alt="状态转换图"></li>
+<li>引入 <strong>挂起</strong> 状态转换图（创建，活动就绪，静止就绪，活动阻塞，静止阻塞，执行，终止）<br>进程挂起 ：进程处于静止状态，若正在执行，则暂停执行；若正在就绪，则不被调度；等待 <strong>激活</strong>。<br><img src="https://images2018.cnblogs.com/blog/1048215/201802/1048215-20180225230737441-833727159.png" alt="引入挂起的进程状态转换图"></li>
+</ol>
+<a id="more"></a></li>
+<li>前趋图：描述一组进程的顺序和并发执行情况<br><img src="https://upload-images.jianshu.io/upload_images/1711514-10640ee4c2c8c273.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/784/format/webp" alt="前趋图"></li>
+<li>进程执行的特征<ol>
+<li>顺序执行特征：顺序性，封闭性，可再现性</li>
+<li>并发执行特征：间断性，失去封闭性，不可再现性</li>
+</ol>
+</li>
+<li>进程的控制<ol>
+<li>引起创建：用户登录；作业调度；提供服务；应用请求。<br>进程创建：申请空白 PCB；分配资源；初始化 PCB；插入就绪队列（就绪队列有空间）；</li>
+<li>引起终止：正常结束；异常结束（越错界，保护错，非法指令，特权指令错，运行超时，等待超时，算术运算错）；外界干预（操作系统发生了某事件，父进程请求，父进程终止）<br>进程终止：根据标识符在 PCB 集合中检索；进程在执行应立即终止执行；若进程有子进程，应终止所有子进程；回收被终止进程的资源；将终止进程的 PCB 从 PCB 集合中移除；</li>
+<li>引起阻塞：共享资源失败；等待某种操作完成；新数据还没到达；等待新任务到达；<br>进程阻塞（自身的主动行为）：进程处于执行状态应立即停止执行；PCB 置于阻塞状态；把 PCB 插入阻塞队列；<br>进程唤醒：把被阻塞进程从阻塞队列移除；PCB 状态由阻塞改为就绪状态；将 PCB 插入就绪队列。</li>
+<li>引起挂起：终端用户需要；父进程请求；负荷调节；操作系统需要；<br>进程挂起：若进程活动就绪，改为静止就绪；若进程活动阻塞，改为静止阻塞；将进程的 PCB 复制到指定的内存区域；<br>进程激活：若进程静止就绪，改为活动就绪；若进程静止阻塞，改为活动阻塞；</li>
+</ol>
+</li>
+<li><strong>进程同步</strong><ol>
+<li>进程同步机制：多个进程在执行次序上进行协调；并发执行的进程进行共享系统资源；使程序的执行具有可再现性；</li>
+<li>临界资源：多个进程采取互斥的方式对临界资源实现共享；（多个进程都需要访问的资源）</li>
+<li>临界区：每个进程中访问临界资源的代码块；</li>
+<li>互斥访问：如果该资源未被访问，进程可进行访问该资源，并设置正在被访问标志；如果资源正在被某进程访问，则本进程无法访问该资源；</li>
+<li>同步机制的规则：空闲让进；忙则等待；有限等待；让权等待；</li>
+</ol>
+</li>
+<li><p>硬件实现进程同步机制<br>优点：简单实现<br>缺点：访问进程要不断测试是否可以进入，处于“忙等”状态，不符合“让权等待”原则，造成处理机时间浪费。</p>
+<ol>
+<li>关中断实现同步：在进入所测试之前关闭中断，完成锁测试并上锁后打开中断。（进程在临界区执行时，<strong>计算机系统不响应中断</strong>）<br>关中断缺点：可能道导致严重后果；影响系统效率；不适用多 CPU 系统；</li>
+<li>Test-and-Set 指令实现同步：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">boolean <span class="title">TS</span><span class="params">(boolean *lock)</span></span>&#123;</span><br><span class="line">  Boolean old;</span><br><span class="line">  old = *lock;</span><br><span class="line">  *lock = TRUE;</span><br><span class="line">  <span class="keyword">return</span> old;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  非临界资源操作；</span><br><span class="line">  <span class="function"><span class="keyword">while</span> <span class="title">TS</span><span class="params">(&amp;lock)</span></span>; <span class="comment">/*当临界资源被锁时阻塞在这*/</span></span><br><span class="line">  临界资源操作;</span><br><span class="line">  lock = FALSE; <span class="comment">/*释放临界资源的锁*/</span></span><br><span class="line">  非临界资源操作;</span><br><span class="line">&#125;<span class="keyword">while</span> (TURE)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>Swap 指令实现同步：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(boolean *a, boolean *b)</span></span>&#123;</span><br><span class="line">  boolean temp;</span><br><span class="line">  temp = *a;</span><br><span class="line">  *a = *b;</span><br><span class="line">  *b = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  key = TURE;</span><br><span class="line">  <span class="keyword">do</span> &#123;</span><br><span class="line">    swap(&amp;lock, &amp;key);</span><br><span class="line">  &#125; <span class="keyword">while</span>(key != FALSE); <span class="comment">/*当临界资源被锁时阻塞在这*/</span></span><br><span class="line">  临界资源操作;</span><br><span class="line">  lock = FALSE;</span><br><span class="line">  非临界资源操作;</span><br><span class="line">&#125; <span class="keyword">while</span>(TRUE);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>信号量机制实现同步（wait(S) , signal(S)）</p>
+<ol>
+<li>整形信号量(未遵循让权等待，出现 “忙等”)</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wait(S)&#123;</span><br><span class="line">  <span class="keyword">while</span> (S &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">    S--;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">signal(S)&#123;</span><br><span class="line">  S++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>记录型信号量（符合让权等待，共享一个临界资源，交替共享多个临界资源易发生死锁）</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> value; <span class="comment">//资源数目</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">process_control_block</span> *<span class="title">list</span>;</span><span class="comment">/*进程链表指针*/</span></span><br><span class="line">&#125;semaphore;</span><br><span class="line">wait(semaphore *S)&#123;</span><br><span class="line">  s-&gt;value--;</span><br><span class="line">  <span class="keyword">if</span> (S-&gt;value &lt; <span class="number">0</span>) block(S-&gt;<span class="built_in">list</span>); <span class="comment">/*资源不够,阻塞当前进程，放弃处理机*/</span></span><br><span class="line">&#125;</span><br><span class="line">signal(semaphore *S)&#123;</span><br><span class="line">  S-&gt;value++;</span><br><span class="line">  <span class="keyword">if</span> (S-&gt;value &lt;= <span class="number">0</span>) wakeup(S-&gt;<span class="built_in">list</span>); <span class="comment">/*仍有阻塞进程，唤醒被阻塞的进程*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>AND 型信号量（共享多个临界资源，一个单位）：多个临界资源要么全部都分配给一个进程，要么都不分配给一个进程。<br>实现方式：在 wait 操作中增加一个 “AND” 条件，即 wait 操作要传入多个临界资源，对每个临界资源实现类似 <strong>记录型信号量</strong> 的操作。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Swait(S1, S2, ... ,Sn)&#123;</span><br><span class="line">  <span class="keyword">while</span> (TRUE) &#123;</span><br><span class="line">    <span class="keyword">if</span> (Si &gt;= <span class="number">1</span> &amp;&amp; ... &amp;&amp; Sn &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; n; i++) Si--;   <span class="comment">/*可以共享*/</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">/*资源不够，进程进入阻塞队列，放弃处理机*/</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Ssignal(S1, S2, ... ,Sn)&#123;</span><br><span class="line">  <span class="keyword">while</span> (TRUE) &#123;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++) &#123;  <span class="comment">/*释放锁*/</span></span><br><span class="line">      Si++;</span><br><span class="line">      <span class="comment">/*进程进入就绪队列*/</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>信号量集（对多个单位的临界资源实现共享）<br>Swait(S1, t1, d1 ,…, Sn, tn, dn);<br>Ssignal(S1, d1 ,…, Sn, dn);</li>
+</ol>
+</li>
+<li><p><strong>信号量的应用</strong></p>
+<ol>
+<li>利用信号量实现进程互斥</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">semaphore mutex=<span class="number">1</span>;</span><br><span class="line">Px()&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">    wait(mutex);</span><br><span class="line">    临界区;</span><br><span class="line">    signal(mutex);</span><br><span class="line">    剩余区;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>利用信号量实现前趋关系</strong><br><strong>巧记：指入 wait；指出 signal</strong><br>通过例子学习：<br><img src="https://upload-images.jianshu.io/upload_images/656630-33723c9b511ef3d3.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240" alt="前趋图举例"><br>前趋关系：S1-&gt;S2, S1-&gt;S3 设置信号量 a，b；S2-&gt;S4,S2-&gt;S5,S3-&gt;S6,S4-&gt;S6,S5-&gt;S6 设置信号量 c,d,e,f,g；<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">P1()&#123;S1; signal(a);signal(b);&#125;</span><br><span class="line">P2()&#123;wait(a),S2; signal(c);signal(d);&#125;</span><br><span class="line">P3()&#123;wait(b);S3; signal(e);&#125;</span><br><span class="line">P4()&#123;wait(c);S4; signal(f);&#125;</span><br><span class="line">P5()&#123;wait(d);S5; signal(g);&#125;</span><br><span class="line">P6()&#123;wait(e);wait(f);wait(g);S6;&#125;</span><br><span class="line">main()&#123;</span><br><span class="line">  semaphore a,b,c,d,e,f,g;</span><br><span class="line">  a.value = b.value = c.value = d.value = e.value = f.value = g.value = <span class="number">0</span>;</span><br><span class="line">  cobegin</span><br><span class="line">    P1();P2();P3();P4();P5();P6();</span><br><span class="line">  coend</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>管程机制（面向对象思想）：用少量信息和对该资源所执行的操作来表征该资源，忽略它们的内部结果过和实现细节，利用共享数据结构抽象表示系统的共享资源。</p>
+</li>
+<li>经典进程同步问题<ol>
+<li>生产者-消费者问题（利用各种信号量解决）</li>
+<li>哲学家进餐问题（利用 AND 信号量机制解决）</li>
+<li>读者-写者问题 （利用 记录型信号量 和 信号量集 解决）</li>
+</ol>
+</li>
+<li>进程通信<ol>
+<li>共享存储系统</li>
+<li>管道通信系统（UNIX）</li>
+<li>消息传递系统</li>
+<li>客户机-服务器系统（CS 系统）</li>
+</ol>
+</li>
+<li>进程和线程的区别？<ol>
+<li>进程是系统进行资源分配和调度的一个独立单位，拥有独立的系统资源空间（内存地址），一个应用程序至少有一个进程，一个进程至少有一个线程。</li>
+<li>线程是进程的一个实体，是 CPU 调度和分配的基本单位，必须依赖应用程序（进程）存在。线程只拥有一点在线程运行过程必须的资源，但是线程之间没有单独的地址空间。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="附件：重要部分的习题理解，看了就会那种。"><a href="#附件：重要部分的习题理解，看了就会那种。" class="headerlink" title="附件：重要部分的习题理解，看了就会那种。"></a><a href="https://github.com/0HongTao0/Blog/blob/master/pic/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%B9%E5%BA%94%E4%B9%A0%E9%A2%98.pptx" target="_blank" rel="noopener">附件：重要部分的习题理解，看了就会那种。</a></h2><h3 id="磁盘存储器的管理"><a href="#磁盘存储器的管理" class="headerlink" title="磁盘存储器的管理"></a>磁盘存储器的管理</h3><ul>
 <li><strong>磁盘文件的链接组织方式</strong><ol>
 <li>连续组织：连续分配方法要求每个文件在磁盘上占有一组连续的块。这样所形成的文件结构称为顺序文件结构，此时的物理文件称为顺序文件。<br><img src="https://upload-images.jianshu.io/upload_images/5853159-daa9e2f8a9e6c3aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480/format/webp" alt="连续分配"></li>
 <li>隐式链接：文件目录的每个目录项中都必须含有指向链接文件的第一个盘块和最后一个盘块的指针。<br><img src="https://upload-images.jianshu.io/upload_images/5853159-c466c43bbd0b1733.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/480/format/webp" alt="隐式链接"></li>
@@ -213,8 +312,7 @@
 <li>混合索引方式<br><img src="https://upload-images.jianshu.io/upload_images/5853159-9616543178004e72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/562/format/webp" alt="混合索引方式"></li>
 </ol>
 </li>
-<li><p><strong>文件存储空间的管理</strong><br>在磁盘上除了需要文件分配表，还需要设置一张 <strong>磁盘分配表</strong>，用于记录可供分配的存储空间。</p>
-<ul>
+<li><strong>文件存储空间的管理</strong><br>在磁盘上除了需要文件分配表，还需要设置一张 <strong>磁盘分配表</strong>，用于记录可供分配的存储空间。<ul>
 <li>存储空间的管理方法<ol>
 <li>空闲表法（效率低）<br><img src="https://upload-images.jianshu.io/upload_images/5853159-0e4943cc3dafc6ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/326/format/webp" alt="空闲盘块表"></li>
 <li>空闲链表法（效率低）</li>
@@ -223,7 +321,6 @@
 </ol>
 </li>
 </ul>
-<a id="more"></a>
 </li>
 </ul>
 <hr>
@@ -419,104 +516,6 @@
 </ol>
 </li>
 </ul>
-<hr>
-<h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><ul>
-<li>前趋图：描述一组进程的顺序和并发执行情况<br><img src="https://upload-images.jianshu.io/upload_images/1711514-10640ee4c2c8c273.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/784/format/webp" alt="前趋图"></li>
-<li>进程执行的特征<ol>
-<li>顺序执行特征：顺序性，封闭性，可再现性</li>
-<li>并发执行特征：间断性，失去封闭性，不可再现性</li>
-</ol>
-</li>
-<li><strong>进程控制块（PCB）</strong> ：描述进程的基本情况和活动过程，对进程进行控制和管理。<ol>
-<li>进程实体 = 程序 + 数据 + 进程控制块</li>
-<li>创建进程就是创建进程的 PCB，撤销进程就是撤销进程的 PCB。</li>
-<li><strong>PCB 的作用：使多道程序能够独立运行。（使进程并发执行）</strong></li>
-<li>PCB 的信息：进程标识符，处理机状态，进程调度信息，进程控制信息。</li>
-<li>操作系统管理 PCB 的方式：线性方式（线性表），链接方式（链表），索引方式（进程状态索引表）  </li>
-</ol>
-</li>
-<li>进程的状态转换<ol>
-<li>状态转换图（创建,就绪，执行，阻塞，，终止）<br><img src="https://images2018.cnblogs.com/blog/1048215/201802/1048215-20180225230728426-2048803863.png" alt="状态转换图"></li>
-<li>引入 <strong>挂起</strong> 状态转换图（创建，活动就绪，静止就绪，活动阻塞，静止阻塞，执行，终止）<br>进程挂起 ：进程处于静止状态，若正在执行，则暂停执行；若正在就绪，则不被调度；等待 <strong>激活</strong>。<br><img src="https://images2018.cnblogs.com/blog/1048215/201802/1048215-20180225230737441-833727159.png" alt="引入挂起的进程状态转换图"></li>
-</ol>
-</li>
-<li>进程的控制<ol>
-<li>引起创建：用户登录；作业调度；提供服务；应用请求。<br>进程创建：申请空白 PCB；分配资源；初始化 PCB；插入就绪队列（就绪队列有空间）；</li>
-<li>引起终止：正常结束；异常结束（越错界，保护错，非法指令，特权指令错，运行超时，等待超时，算术运算错）；外界干预（操作系统发生了某事件，父进程请求，父进程终止）<br>进程终止：根据标识符在 PCB 集合中检索；进程在执行应立即终止执行；若进程有子进程，应终止所有子进程；回收被终止进程的资源；将终止进程的 PCB 从 PCB 集合中移除；</li>
-<li>引起阻塞：共享资源失败；等待某种操作完成；新数据还没到达；等待新任务到达；<br>进程阻塞（自身的主动行为）：进程处于执行状态应立即停止执行；PCB 置于阻塞状态；把 PCB 插入阻塞队列；<br>进程唤醒：把被阻塞进程从阻塞队列移除；PCB 状态由阻塞改为就绪状态；将 PCB 插入就绪队列。</li>
-<li>引起挂起：终端用户需要；父进程请求；负荷调节；操作系统需要；<br>进程挂起：若进程活动就绪，改为静止就绪；若进程活动阻塞，改为静止阻塞；将进程的 PCB 复制到指定的内存区域；<br>进程激活：若进程静止就绪，改为活动就绪；若进程静止阻塞，改为活动阻塞；</li>
-</ol>
-</li>
-<li><strong>进程同步</strong><ol>
-<li>进程同步机制：多个进程在执行次序上进行协调；并发执行的进程进行共享系统资源；使程序的执行具有可再现性；</li>
-<li>临界资源：多个进程采取互斥的方式对临界资源实现共享；（多个进程都需要访问的资源）</li>
-<li>临界区：每个进程中访问临界资源的代码块；</li>
-<li>互斥访问：如果该资源未被访问，进程可进行访问该资源，并设置正在被访问标志；如果资源正在被某进程访问，则本进程无法访问该资源；</li>
-<li>同步机制的规则：空闲让进；忙则等待；有限等待；让权等待；</li>
-</ol>
-</li>
-<li><p>硬件实现进程同步机制<br>优点：简单实现<br>缺点：访问进程要不断测试是否可以进入，处于“忙等”状态，不符合“让权等待”原则，造成处理机时间浪费。</p>
-<ol>
-<li>关中断实现同步：在进入所测试之前关闭中断，完成锁测试并上锁后打开中断。（进程在临界区执行时，<strong>计算机系统不响应中断</strong>）<br>关中断缺点：可能道导致严重后果；影响系统效率；不适用多 CPU 系统；</li>
-<li>Test-and-Set 指令实现同步：</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">boolean <span class="title">TS</span><span class="params">(boolean *lock)</span></span>&#123;</span><br><span class="line">  Boolean old;</span><br><span class="line">  old = *lock;</span><br><span class="line">  *lock = TRUE;</span><br><span class="line">  <span class="keyword">return</span> old;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  非临界资源操作；</span><br><span class="line">  <span class="function"><span class="keyword">while</span> <span class="title">TS</span><span class="params">(&amp;lock)</span></span>; <span class="comment">/*当临界资源被锁时阻塞在这*/</span></span><br><span class="line">  临界资源操作;</span><br><span class="line">  lock = FALSE; <span class="comment">/*释放临界资源的锁*/</span></span><br><span class="line">  非临界资源操作;</span><br><span class="line">&#125;<span class="keyword">while</span> (TURE)</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>Swap 指令实现同步：</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(boolean *a, boolean *b)</span></span>&#123;</span><br><span class="line">  boolean temp;</span><br><span class="line">  temp = *a;</span><br><span class="line">  *a = *b;</span><br><span class="line">  *b = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  key = TURE;</span><br><span class="line">  <span class="keyword">do</span> &#123;</span><br><span class="line">    swap(&amp;lock, &amp;key);</span><br><span class="line">  &#125; <span class="keyword">while</span>(key != FALSE); <span class="comment">/*当临界资源被锁时阻塞在这*/</span></span><br><span class="line">  临界资源操作;</span><br><span class="line">  lock = FALSE;</span><br><span class="line">  非临界资源操作;</span><br><span class="line">&#125; <span class="keyword">while</span>(TRUE);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>信号量机制实现同步（wait(S) , signal(S)）</p>
-<ol>
-<li>整形信号量(未遵循让权等待，出现 “忙等”)</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wait(S)&#123;</span><br><span class="line">  <span class="keyword">while</span> (S &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">    S--;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">signal(S)&#123;</span><br><span class="line">  S++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>记录型信号量（符合让权等待，共享一个临界资源，交替共享多个临界资源易发生死锁）</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> value; <span class="comment">//资源数目</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">process_control_block</span> *<span class="title">list</span>;</span><span class="comment">/*进程链表指针*/</span></span><br><span class="line">&#125;semaphore;</span><br><span class="line">wait(semaphore *S)&#123;</span><br><span class="line">  s-&gt;value--;</span><br><span class="line">  <span class="keyword">if</span> (S-&gt;value &lt; <span class="number">0</span>) block(S-&gt;<span class="built_in">list</span>); <span class="comment">/*资源不够,阻塞当前进程，放弃处理机*/</span></span><br><span class="line">&#125;</span><br><span class="line">signal(semaphore *S)&#123;</span><br><span class="line">  S-&gt;value++;</span><br><span class="line">  <span class="keyword">if</span> (S-&gt;value &lt;= <span class="number">0</span>) wakeup(S-&gt;<span class="built_in">list</span>); <span class="comment">/*仍有阻塞进程，唤醒被阻塞的进程*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>AND 型信号量（共享多个临界资源，一个单位）：多个临界资源要么全部都分配给一个进程，要么都不分配给一个进程。<br>实现方式：在 wait 操作中增加一个 “AND” 条件，即 wait 操作要传入多个临界资源，对每个临界资源实现类似 <strong>记录型信号量</strong> 的操作。</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Swait(S1, S2, ... ,Sn)&#123;</span><br><span class="line">  <span class="keyword">while</span> (TRUE) &#123;</span><br><span class="line">    <span class="keyword">if</span> (Si &gt;= <span class="number">1</span> &amp;&amp; ... &amp;&amp; Sn &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">      <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; n; i++) Si--;   <span class="comment">/*可以共享*/</span></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">/*资源不够，进程进入阻塞队列，放弃处理机*/</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Ssignal(S1, S2, ... ,Sn)&#123;</span><br><span class="line">  <span class="keyword">while</span> (TRUE) &#123;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++) &#123;  <span class="comment">/*释放锁*/</span></span><br><span class="line">      Si++;</span><br><span class="line">      <span class="comment">/*进程进入就绪队列*/</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>信号量集（对多个单位的临界资源实现共享）<br>Swait(S1, t1, d1 ,…, Sn, tn, dn);<br>Ssignal(S1, d1 ,…, Sn, dn);</li>
-</ol>
-</li>
-<li><p><strong>信号量的应用</strong></p>
-<ol>
-<li>利用信号量实现进程互斥</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">semaphore mutex=<span class="number">1</span>;</span><br><span class="line">Px()&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">    wait(mutex);</span><br><span class="line">    临界区;</span><br><span class="line">    signal(mutex);</span><br><span class="line">    剩余区;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><strong>利用信号量实现前趋关系</strong><br><strong>巧记：指入 wait；指出 signal</strong><br>通过例子学习：<br><img src="https://upload-images.jianshu.io/upload_images/656630-33723c9b511ef3d3.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240" alt="前趋图举例"><br>前趋关系：S1-&gt;S2, S1-&gt;S3 设置信号量 a，b；S2-&gt;S4,S2-&gt;S5,S3-&gt;S6,S4-&gt;S6,S5-&gt;S6 设置信号量 c,d,e,f,g；<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">P1()&#123;S1; signal(a);signal(b);&#125;</span><br><span class="line">P2()&#123;wait(a),S2; signal(c);signal(d);&#125;</span><br><span class="line">P3()&#123;wait(b);S3; signal(e);&#125;</span><br><span class="line">P4()&#123;wait(c);S4; signal(f);&#125;</span><br><span class="line">P5()&#123;wait(d);S5; signal(g);&#125;</span><br><span class="line">P6()&#123;wait(e);wait(f);wait(g);S6;&#125;</span><br><span class="line">main()&#123;</span><br><span class="line">  semaphore a,b,c,d,e,f,g;</span><br><span class="line">  a.value = b.value = c.value = d.value = e.value = f.value = g.value = <span class="number">0</span>;</span><br><span class="line">  cobegin</span><br><span class="line">    P1();P2();P3();P4();P5();P6();</span><br><span class="line">  coend</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>管程机制（面向对象思想）：用少量信息和对该资源所执行的操作来表征该资源，忽略它们的内部结果过和实现细节，利用共享数据结构抽象表示系统的共享资源。</p>
-</li>
-<li>经典进程同步问题<ol>
-<li>生产者-消费者问题（利用各种信号量解决）</li>
-<li>哲学家进餐问题（利用 AND 信号量机制解决）</li>
-<li>读者-写者问题 （利用 记录型信号量 和 信号量集 解决）</li>
-</ol>
-</li>
-<li>进程通信<ol>
-<li>共享存储系统</li>
-<li>管道通信系统（UNIX）</li>
-<li>消息传递系统</li>
-<li>客户机-服务器系统（CS 系统）</li>
-</ol>
-</li>
-<li>进程和线程的区别？<ol>
-<li>进程是系统进行资源分配和调度的一个独立单位，拥有独立的系统资源空间（内存地址），一个应用程序至少有一个进程，一个进程至少有一个线程。</li>
-<li>线程是进程的一个实体，是 CPU 调度和分配的基本单位，必须依赖应用程序（进程）存在。线程只拥有一点在线程运行过程必须的资源，但是线程之间没有单独的地址空间。</li>
-</ol>
-</li>
-</ul>
-<hr>
 
       
 
